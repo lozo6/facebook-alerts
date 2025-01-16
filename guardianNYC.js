@@ -25,12 +25,12 @@ if (!fs.existsSync(storeDir)) {
 }
 
 // Redirect console.log to a log file
-const originalConsoleLog = console.log;
-console.log = (...args) => {
-  const timestamp = new Date().toISOString();
-  fs.appendFileSync(logFile, `[${timestamp}] ${args.join(" ")}\n`);
-  originalConsoleLog(...args);
-};
+// const originalConsoleLog = console.log;
+// console.log = (...args) => {
+//   const timestamp = new Date().toISOString();
+//   fs.appendFileSync(logFile, `[${timestamp}] ${args.join(" ")}\n`);
+//   originalConsoleLog(...args);
+// };
 
 // Alert Keywords
 const alertKeywords = [
@@ -245,7 +245,7 @@ module.exports = {
   postToFacebook,
 };
 
-// // Main Function
+// Main Function
 // (async () => {
 //   console.log("Starting the script...");
 //   const data = await fetchAndProcessData();
