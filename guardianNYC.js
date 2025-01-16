@@ -17,20 +17,18 @@ const params = {
 };
 
 // Directories and Logging
-const storeDir = path.join(__dirname, "data");
-const logFile = path.join(storeDir, "process_log.txt");
-
-if (!fs.existsSync(storeDir)) {
-  fs.mkdirSync(storeDir, { recursive: true });
-}
+const tempDir = "/tmp"; // Use the writable /tmp directory for Vercel
+const logFile = path.join(tempDir, "process_log.txt");
+const citizensFilePath = path.join(tempDir, "citizens.json");
+const postedFilePath = path.join(tempDir, "posted.json");
 
 // Redirect console.log to a log file
-// const originalConsoleLog = console.log;
-// console.log = (...args) => {
-//   const timestamp = new Date().toISOString();
-//   fs.appendFileSync(logFile, `[${timestamp}] ${args.join(" ")}\n`);
-//   originalConsoleLog(...args);
-// };
+const originalConsoleLog = console.log;
+console.log = (...args) => {
+  const timestamp = new Date().toISOString();
+  fs.appendFileSync(logFile, `[${timestamp}] ${args.join(" ")}\n`);
+  originalConsoleLog(...args);
+};
 
 // Alert Keywords
 const alertKeywords = [
@@ -75,10 +73,10 @@ const alertKeywords = [
 // Helper Functions
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const getPostedContent = (filePath) => {
-  if (fs.existsSync(filePath)) {
+const getPostedContent = () => {
+  if (fs.existsSync(postedFilePath)) {
     try {
-      const data = fs.readFileSync(filePath, "utf8");
+      const data = fs.readFileSync(postedFilePath, "utf8");
       return JSON.parse(data) || [];
     } catch (error) {
       console.error("Error reading posted.json:", error.message);
@@ -87,11 +85,11 @@ const getPostedContent = (filePath) => {
   return [];
 };
 
-const savePostedData = (postContent, postId, filePath) => {
+const savePostedData = (postContent, postId) => {
   const dateTimePosted = new Date().toISOString();
-  const existingPosts = getPostedContent(filePath);
+  const existingPosts = getPostedContent();
   existingPosts.push({ postContent, postId, dateTimePosted });
-  fs.writeFileSync(filePath, JSON.stringify(existingPosts, null, 2));
+  fs.writeFileSync(postedFilePath, JSON.stringify(existingPosts, null, 2));
   console.log("Post content appended to posted.json.");
 };
 
@@ -124,10 +122,10 @@ const summarizeUpdates = (updates, title) => {
     : "No further details at this time.";
 };
 
-function processTitle(title) {
+const processTitle = (title) => {
   let sanitizedTitle = title
-    .replace(/\(.*?\)/g, "") // Remove content in parentheses
-    .replace(/[^a-zA-Z0-9\s'-]/g, "") // Allow only alphanumeric characters, hyphens, and apostrophes
+    .replace(/\(.*?\)/g, "")
+    .replace(/[^a-zA-Z0-9\s'-]/g, "")
     .trim();
 
   if (sanitizedTitle.toLowerCase().includes("body found")) {
@@ -146,12 +144,11 @@ function processTitle(title) {
     ) || "low";
 
   return {
-    title: truncatedTitle.replace(/,+$/, ""), // Remove trailing commas
+    title: truncatedTitle.replace(/,+$/, ""),
     priority,
   };
-}
+};
 
-// Sorting and Data Extraction
 const sortByPriority = (data) =>
   data.sort((a, b) => {
     const aIndex = alertKeywords.indexOf(a.priority);
@@ -181,17 +178,13 @@ const extractData = (responseData) => {
   );
 };
 
-// Citizen API and Facebook Posting
 const fetchAndProcessData = async () => {
   const url = "https://citizen.com/api/incident/trending";
   console.log("Fetching data from Citizen API...");
   try {
     const response = await axios.get(url, { params });
     const data = extractData(response.data);
-    fs.writeFileSync(
-      path.join(storeDir, "citizens.json"),
-      JSON.stringify(data, null, 2)
-    );
+    fs.writeFileSync(citizensFilePath, JSON.stringify(data, null, 2));
     console.log("Data saved to citizens.json");
     return data;
   } catch (error) {
@@ -201,22 +194,17 @@ const fetchAndProcessData = async () => {
 };
 
 const postToFacebook = async (data) => {
-  const postDataFile = path.join(storeDir, "posted.json");
-  const previouslyPosted = getPostedContent(postDataFile).map(
-    (p) => p.postContent
-  );
+  const previouslyPosted = getPostedContent().map((p) => p.postContent);
 
   for (const post of data) {
-    if (post.priority === "low") continue; // Skip low-priority items
+    if (post.priority === "low") continue;
 
     const { title, location, time, updates, neighborhood } = post;
-    const borough = neighborhood.split(",").pop().trim(); // Extract borough
-    const hashtags = `#safety #alerts #NYC #${borough}`; // Correct hashtag format
+    const borough = neighborhood.split(",").pop().trim();
+    const hashtags = `#safety #alerts #NYC #${borough}`;
 
-    // Format the post content
     const formattedOutput = `${title}\n\n${location}\n${time}\nUpdates:\n${updates}\n\n${hashtags}`;
 
-    // Check for duplicate posts
     if (previouslyPosted.includes(formattedOutput)) {
       console.log(`Skipping duplicate post: ${title}`);
       continue;
@@ -228,18 +216,17 @@ const postToFacebook = async (data) => {
         { message: formattedOutput, access_token: accessToken }
       );
 
-      savePostedData(formattedOutput, response.data.id, postDataFile);
+      savePostedData(formattedOutput, response.data.id);
       console.log(`Posted: ${title}`);
 
       console.log("Waiting 60 seconds before posting the next item...");
-      await delay(60000); // Wait 60 seconds between posts
+      await delay(60000);
     } catch (error) {
       console.error("Error posting to Facebook:", error.message);
     }
   }
 };
 
-// Export the fetch function and the Facebook posting function
 module.exports = {
   fetchAndProcessData,
   postToFacebook,
