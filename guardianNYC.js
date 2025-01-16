@@ -4,11 +4,17 @@ const fs = require("fs");
 const path = require("path");
 
 // Constants and Configurations
-const configFilePath = "./config.json";
-const { params } = JSON.parse(fs.readFileSync(configFilePath, "utf8"));
 const auth_key = process.env.AUTH_KEY;
 const pageId = process.env.PAGE_ID;
 const accessToken = process.env.ACCESS_TOKEN;
+const params = {
+  lowerLatitude: parseFloat(process.env.LOWER_LATITUDE),
+  lowerLongitude: parseFloat(process.env.LOWER_LONGITUDE),
+  upperLatitude: parseFloat(process.env.UPPER_LATITUDE),
+  upperLongitude: parseFloat(process.env.UPPER_LONGITUDE),
+  fullResponse: process.env.FULL_RESPONSE === "true",
+  limit: parseInt(process.env.LIMIT, 10),
+};
 
 // Directories and Logging
 const storeDir = path.join(__dirname, "data");
