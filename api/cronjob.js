@@ -1,13 +1,14 @@
-const handler = async (req, res) => {
-  console.log("Starting the script...");
-  const data = await fetchAndProcessData();
-  if (data.length > 0) {
-    console.log("Posting high-priority data to Facebook...");
-    await postToFacebook(data);
-  } else {
-    console.log("No data to process.");
-  }
-  res.status(200).send("Script executed successfully");
-};
+require("dotenv").config();
+const { fetchAndProcessData } = require("../../guardianNYC"); // Adjust the path based on your structure
 
-export default handler;
+module.exports = async (req, res) => {
+  try {
+    console.log("Cronjob started.");
+    const data = await fetchAndProcessData();
+    console.log("Cronjob completed.");
+    res.status(200).json({ message: "Cronjob executed successfully", data });
+  } catch (error) {
+    console.error("Error during cronjob execution:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
