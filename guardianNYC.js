@@ -17,10 +17,10 @@ const params = {
 };
 
 // Directories and Logging
-const tempDir = "/tmp"; // Use the writable /tmp directory for Vercel
-const logFile = path.join(tempDir, "process_log.txt");
-const citizensFilePath = path.join(tempDir, "citizens.json");
-const postedFilePath = path.join(tempDir, "posted.json");
+const dataDir = "data"; // Use the writable /tmp directory for Vercel
+const logFile = path.join(dataDir, "process_log.txt");
+const citizensFilePath = path.join(dataDir, "citizens.json");
+const postedFilePath = path.join(dataDir, "posted.json");
 
 // Redirect console.log to a log file
 const originalConsoleLog = console.log;
