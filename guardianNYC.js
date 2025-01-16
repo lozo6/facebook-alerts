@@ -227,19 +227,14 @@ const postToFacebook = async (data) => {
   }
 };
 
-module.exports = {
-  fetchAndProcessData,
-  postToFacebook,
-};
-
 // Main Function
-// (async () => {
-//   console.log("Starting the script...");
-//   const data = await fetchAndProcessData();
-//   if (data.length > 0) {
-//     console.log("Posting high-priority data to Facebook...");
-//     await postToFacebook(data);
-//   } else {
-//     console.log("No data to process.");
-//   }
-// })();
+(async () => {
+  console.log("Starting the script...");
+  const data = await fetchAndProcessData();
+  if (data.length > 0) {
+    console.log("Posting high-priority data to Facebook...");
+    await postToFacebook(data);
+  } else {
+    console.log("No data to process.");
+  }
+})();
