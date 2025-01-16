@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16" # Or your project's Node.js version
+          node-version: "16.18.1" # Or your project's Node.js version
 
       # Install dependencies
       - name: Install dependencies
@@ -28,6 +28,7 @@ jobs:
       - name: Inject environment variables
         env:
           AUTH_KEY: ${{ secrets.AUTH_KEY }}
+          APP_ID: ${{ secrets.APP_ID }}
           PAGE_ID: ${{ secrets.PAGE_ID }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           LOWER_LATITUDE: ${{ secrets.LOWER_LATITUDE }}
