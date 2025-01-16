@@ -1,197 +1,201 @@
 const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
+const nlp = require("compromise");
 
+// Read configuration
 const configFilePath = "./config.json";
 
-// Function to read the config file
 function readConfig() {
   const config = JSON.parse(fs.readFileSync(configFilePath));
   return config;
 }
 
-// Read configuration from config.json
-const { auth_key, params, pageId, accessToken } = readConfig();
+const { pageId, accessToken, params } = readConfig();
 
-// Define store directory
+// Define directories
 const storeDir = path.join(__dirname, "data");
+if (!fs.existsSync(storeDir)) {
+  fs.mkdirSync(storeDir, { recursive: true });
+}
 
-// --- First Script: Citizen Data Extraction ---
-const url = "https://citizen.com/api/incident/trending";
-
-const softCrimeKeywords = [
-  "lost dog",
-  "lost cat",
-  "pet",
-  "missing pet",
-  "stray",
-  "found pet",
-  "dog",
-  "cat",
-  "missing",
-  "drone",
-  "drones",
-  "gas",
-  "odor",
-  "fire",
-  "EMS",
-  "ems",
-  "backup",
-  "stuck",
-  "crash",
-  "sinkhole",
+// Define alert keywords
+const alertKeywords = [
+  "shoot",
+  "shooting",
+  "shot",
+  "gunfire",
+  "stab",
+  "stabbing",
+  "stabbed",
+  "knife",
+  "robbery",
+  "rob",
+  "robbed",
+  "mugging",
+  "mugged",
+  "home invasion",
+  "break-in",
+  "broke into",
+  "forced entry",
+  "intruder",
+  "burglary",
+  "burgle",
+  "burgled",
+  "murder",
+  "kill",
+  "killing",
+  "homicide",
+  "manslaughter",
+  "body found",
+  "corpse",
+  "dead body",
+  "human remains",
+  "stolen vehicle",
+  "car theft",
+  "vehicle theft",
+  "stole car",
+  "car stolen",
 ];
 
-const unwantedUpdates = ["Radio clips available."];
-
-function formatTime(ts) {
-  const date = new Date(ts);
-  let hours = date.getHours();
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // The hour '0' should be '12' for 12 AM
-  return `${String(hours).padStart(2, "0")}:${minutes} ${ampm}`;
+// Helper functions
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function translateToChinese(title) {
-  try {
-    const response = await axios.post(
-      "https://api-free.deepl.com/v2/translate",
-      null,
-      {
-        params: {
-          auth_key: auth_key, // Use auth_key from config.json
-          text: title,
-          target_lang: "ZH", // Target language is Chinese
-        },
+function getCurrentDateTime() {
+  const now = new Date();
+  return now.toISOString().replace("T", " ").split(".")[0];
+}
+
+function savePostedData(postContent, postId, filePath) {
+  const dateTimePosted = getCurrentDateTime();
+  let existingPosts = [];
+
+  if (fs.existsSync(filePath)) {
+    try {
+      const fileData = fs.readFileSync(filePath, "utf8");
+      existingPosts = JSON.parse(fileData);
+
+      if (!Array.isArray(existingPosts)) {
+        existingPosts = [];
       }
-    );
-    return response.data.translations[0].text;
-  } catch (error) {
-    console.error("Error translating title:", error);
-    return "";
-  }
-}
-
-async function extractData(responseData) {
-  if (responseData && Array.isArray(responseData.results)) {
-    const results = [];
-    for (const item of responseData.results) {
-      const updates = item.updates
-        ? Object.values(item.updates)
-            .map((update) => update.text)
-            .filter((updateText) => !unwantedUpdates.includes(updateText))
-        : [];
-      const chineseTranslation = await translateToChinese(item.title);
-      results.push({
-        location: item.location,
-        neighborhood: item.neighborhood,
-        title: `${item.title} (${chineseTranslation})`, // Title with Chinese translation
-        time: formatTime(item.ts),
-        updates: updates,
-      });
+    } catch (error) {
+      console.error("Error reading posted.json:", error.message);
     }
-    return results.filter((item) => {
-      return !softCrimeKeywords.some((keyword) =>
-        item.title.toLowerCase().includes(keyword)
-      );
-    });
-  } else {
-    return [];
   }
+
+  existingPosts.push({ postContent, postId, dateTimePosted });
+
+  fs.writeFileSync(filePath, JSON.stringify(existingPosts, null, 2));
+  console.log("Post content appended to posted.json.");
 }
 
-function logExtraction() {
-  const logMessage = `Data extracted successfully at ${new Date().toISOString()}\n`;
-  fs.appendFileSync(path.join(storeDir, "extraction_log.txt"), logMessage);
+function getPostedContent(filePath) {
+  if (fs.existsSync(filePath)) {
+    try {
+      const fileData = fs.readFileSync(filePath, "utf8");
+      return JSON.parse(fileData) || [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
 }
 
-async function citizenAPI() {
+// Sorting function
+function sortByPriority(data) {
+  return data.sort((a, b) => {
+    const aIndex = alertKeywords.indexOf(a.priority);
+    const bIndex = alertKeywords.indexOf(b.priority);
+    return (
+      (aIndex === -1 ? Infinity : aIndex) - (bIndex === -1 ? Infinity : bIndex)
+    );
+  });
+}
+
+// Process and extract data from CitizenAPI response
+async function fetchAndProcessData() {
+  const url = "https://citizen.com/api/incident/trending";
   try {
     const response = await axios.get(url, { params });
 
-    const extractedData = await extractData(response.data);
+    if (response.data && Array.isArray(response.data.results)) {
+      const extractedData = response.data.results.map((item) => {
+        const { title, location, neighborhood = "Unknown", ts } = item;
+        const updates = item.updates
+          ? Object.values(item.updates)
+              .map((update) => update.text)
+              .join(" ")
+          : "No further details at this time.";
 
-    fs.writeFileSync(
-      path.join(storeDir, "citizens.json"),
-      JSON.stringify(extractedData, null, 2)
-    );
+        const priority =
+          alertKeywords.find((keyword) =>
+            nlp(title).out("root").includes(keyword)
+          ) || "low";
 
-    logExtraction();
-  } catch (error) {
-    console.error("Error fetching data from Citizens API:", error);
-  }
-}
+        const time = getCurrentDateTime(new Date(ts));
 
-// --- Second Script: Posting to Facebook ---
-function getCurrentDateTime() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
-
-  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-}
-
-fs.readFile(path.join(storeDir, "citizens.json"), "utf8", (err, data) => {
-  if (err) {
-    console.error("Error reading extracted data:", err);
-    return;
-  }
-
-  try {
-    const parsedData = JSON.parse(data);
-    const firstPost = parsedData[0];
-    const { title, location, neighborhood, time, updates } = firstPost;
-    const borough = neighborhood.split(",").pop().trim();
-    const boroughHashtag = `#${borough}NY`;
-    const hashtags = `#safety #alerts #NYC ${boroughHashtag}`;
-    const formattedUpdates = updates.map((update) => `- ${update}`).join("\n");
-
-    const formattedOutput = `${title}\n\n${location}\n${neighborhood}\nReported at ${time}\nUpdates:\n${formattedUpdates}\n\n${hashtags}`;
-
-    const dateTimePosted = getCurrentDateTime();
-
-    axios
-      .post(`https://graph.facebook.com/v21.0/${pageId}/feed`, {
-        message: formattedOutput,
-        access_token: accessToken,
-      })
-      .then((response) => {
-        console.log("Post created:", response.data);
-
-        if (!fs.existsSync(storeDir)) {
-          fs.mkdirSync(storeDir, { recursive: true });
-        }
-
-        const postData = {
-          postContent: formattedOutput,
-          dateTimePosted: dateTimePosted,
-        };
-
-        fs.writeFileSync(
-          path.join(storeDir, "posted.json"),
-          JSON.stringify(postData, null, 2)
-        );
-
-        console.log(
-          "Post content and dateTimePosted saved to data/posted.json"
-        );
-      })
-      .catch((error) => {
-        console.error(
-          "Error posting:",
-          error.response ? error.response.data : error.message
-        );
+        return { title, priority, location, neighborhood, time, updates };
       });
-  } catch (parseError) {
-    console.error("Error parsing JSON:", parseError);
-  }
-});
 
-// Call the function to test
-citizenAPI();
+      return sortByPriority(extractedData);
+    }
+  } catch (error) {
+    console.error("Error fetching Citizen data:", error.message);
+  }
+  return [];
+}
+
+// Post data to Facebook
+async function postToFacebook(data) {
+  const postDataFile = path.join(storeDir, "posted.json");
+  const previouslyPosted = getPostedContent(postDataFile).map(
+    (item) => item.postContent
+  );
+
+  for (const post of data) {
+    if (post.priority === "low") continue; // Skip low-priority items
+    const { title, location, time, updates, neighborhood } = post;
+
+    const borough = neighborhood.includes(",")
+      ? neighborhood.split(",").pop().trim()
+      : neighborhood;
+    const boroughHashtag = `#${borough}`;
+    const hashtags = `#safety #alerts #NYC ${boroughHashtag}`;
+    const formattedOutput = `${title}\n\n${location}\nReported at ${time}\nUpdates:\n${updates}\n\n${hashtags}`;
+
+    if (previouslyPosted.includes(formattedOutput)) {
+      console.log("Skipping duplicate post:", title);
+      continue;
+    }
+
+    try {
+      const response = await axios.post(
+        `https://graph.facebook.com/v21.0/${pageId}/feed`,
+        {
+          message: formattedOutput,
+          access_token: accessToken,
+        }
+      );
+
+      savePostedData(formattedOutput, response.data.id, postDataFile);
+      console.log("Posted:", title);
+
+      console.log("Waiting 60 seconds before posting the next item...");
+      await delay(60000); // 60-second delay
+    } catch (error) {
+      console.error("Error posting to Facebook:", error.message);
+    }
+  }
+}
+
+// Main function
+(async () => {
+  const data = await fetchAndProcessData();
+  if (data.length > 0) {
+    await postToFacebook(data);
+  } else {
+    console.log("No data to process.");
+  }
+})();
