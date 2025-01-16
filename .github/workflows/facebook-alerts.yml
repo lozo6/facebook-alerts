@@ -1,0 +1,39 @@
+name: Facebook Alerts Cronjob
+
+on:
+  schedule:
+    - cron: "0 * * * *" # Runs every hour (UTC)
+  workflow_dispatch: # Allows manual trigger of the workflow
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.18.1" # Specify the Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the Facebook Alerts script
+        run: node guardianNYC.js
+
+      - name: Archive Logs (Optional)
+        if: ${{ always() }} # This ensures logs are archived even if the script fails
+        run: |
+          mkdir -p logs
+          mv /tmp/process_log.txt logs/
+        env:
+          TEMP_DIR: /tmp
+
+      - name: Upload logs as an artifact (Optional)
+        uses: actions/upload-artifact@v3
+        with:
+          name: process-logs
+          path: logs/
