@@ -233,6 +233,12 @@ const postToFacebook = async (data) => {
   }
 };
 
+// Export the fetch function and the Facebook posting function
+module.exports = {
+  fetchAndProcessData,
+  postToFacebook,
+};
+
 // // Main Function
 // (async () => {
 //   console.log("Starting the script...");
