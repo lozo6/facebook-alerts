@@ -2,38 +2,43 @@ name: Facebook Alerts Cronjob
 
 on:
   schedule:
-    - cron: "0 * * * *" # Runs every hour (UTC)
-  workflow_dispatch: # Allows manual trigger of the workflow
+    - cron: "0 * * * *" # Run every hour
+  workflow_dispatch: # Allow manual triggers
 
 jobs:
-  run-script:
+  facebook-alerts:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16.18.1" # Specify the Node.js version
+          node-version: "16" # Or your project's Node.js version
 
+      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      - name: Run the Facebook Alerts script
-        run: node guardianNYC.js
-
-      - name: Archive Logs (Optional)
-        if: ${{ always() }} # This ensures logs are archived even if the script fails
-        run: |
-          mkdir -p logs
-          mv /tmp/process_log.txt logs/
+      # Inject environment variables into runtime
+      - name: Inject environment variables
         env:
-          TEMP_DIR: /tmp
+          AUTH_KEY: ${{ secrets.AUTH_KEY }}
+          PAGE_ID: ${{ secrets.PAGE_ID }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          LOWER_LATITUDE: ${{ secrets.LOWER_LATITUDE }}
+          LOWER_LONGITUDE: ${{ secrets.LOWER_LONGITUDE }}
+          UPPER_LATITUDE: ${{ secrets.UPPER_LATITUDE }}
+          UPPER_LONGITUDE: ${{ secrets.UPPER_LONGITUDE }}
+          FULL_RESPONSE: ${{ secrets.FULL_RESPONSE }}
+          LIMIT: ${{ secrets.LIMIT }}
+        run: |
+          echo "Environment variables injected"
 
-      - name: Upload logs as an artifact (Optional)
-        uses: actions/upload-artifact@v3
-        with:
-          name: process-logs
-          path: logs/
+      # Run your Node.js script
+      - name: Run Facebook alerts script
+        run: node guardianNYC.js
