@@ -1,34 +1,38 @@
-name: Facebook Alerts Cronjob
+name: Facebook Alerts
 
 on:
-  # schedule:
-  #   - cron: "0 * * * *" # Run every hour
-  workflow_dispatch: # Allow manual triggers
+  workflow_dispatch: # Allows manual triggers
 
 jobs:
-  facebook-alerts:
+  run-facebook-alerts:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout code
-      - name: Checkout repository
+      # Step 1: Check out the code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js
+      # Step 2: Download previously saved data as artifacts
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: data-files
+          path: data
+        continue-on-error: true # Ensures the workflow proceeds if no artifacts exist
+
+      # Step 3: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16.18.1" # Or your project's Node.js version
+          node-version: 16.18.1
 
-      # Install dependencies
+      # Step 4: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Inject environment variables into runtime
-      - name: Inject environment variables
+      # Step 5: Run the Facebook Alerts script
+      - name: Run Facebook Alerts
         env:
           AUTH_KEY: ${{ secrets.AUTH_KEY }}
-          APP_ID: ${{ secrets.APP_ID }}
           PAGE_ID: ${{ secrets.PAGE_ID }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           LOWER_LATITUDE: ${{ secrets.LOWER_LATITUDE }}
@@ -37,9 +41,11 @@ jobs:
           UPPER_LONGITUDE: ${{ secrets.UPPER_LONGITUDE }}
           FULL_RESPONSE: ${{ secrets.FULL_RESPONSE }}
           LIMIT: ${{ secrets.LIMIT }}
-        run: |
-          echo "Environment variables injected"
-
-      # Run your Node.js script
-      - name: Run Facebook alerts script
         run: node guardianNYC.js
+
+      # Step 6: Upload updated data back as artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: data-files
+          path: data
