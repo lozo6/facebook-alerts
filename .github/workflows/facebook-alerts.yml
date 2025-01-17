@@ -11,25 +11,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Download previously saved data as artifacts
+      # Step 2: Ensure the data directory exists
+      - name: Prepare Data Directory
+        run: mkdir -p data
+
+      # Step 3: Download previously saved data as artifacts (optional)
       - name: Download Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: data-files
           path: data
-        continue-on-error: true # Ensures the workflow proceeds if no artifacts exist
+        continue-on-error: true # Ensures workflow continues if no artifacts exist
 
-      # Step 3: Set up Node.js environment
+      # Step 4: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16.18.1
 
-      # Step 4: Install dependencies
+      # Step 5: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 5: Run the Facebook Alerts script
+      # Step 6: Run the Facebook Alerts script
       - name: Run Facebook Alerts
         env:
           AUTH_KEY: ${{ secrets.AUTH_KEY }}
@@ -43,9 +47,9 @@ jobs:
           LIMIT: ${{ secrets.LIMIT }}
         run: node guardianNYC.js
 
-      # Step 6: Upload updated data back as artifacts
+      # Step 7: Upload updated data back as artifacts
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: data-files
           path: data
