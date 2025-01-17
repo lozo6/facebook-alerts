@@ -21,7 +21,7 @@ jobs:
         with:
           name: data-files
           path: data
-        continue-on-error: true # Ensures workflow continues if no artifacts exist
+        continue-on-error: true # Continue if artifacts are not found
 
       # Step 4: Set up Node.js environment
       - name: Set up Node.js
