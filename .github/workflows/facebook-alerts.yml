@@ -12,12 +12,8 @@ jobs:
         uses: actions/checkout@v3
 
       # Step 2: Ensure the data directory exists
-      - name: Ensure Data Directory Exists
-        run: |
-          mkdir -p data
-          [ -f data/citizens.json ] || echo "[]" > data/citizens.json
-          [ -f data/posted.json ] || echo "[]" > data/posted.json
-          [ -f data/process_log.txt ] || echo "# Log File" > data/process_log.txt
+      - name: Prepare Data Directory
+        run: mkdir -p data
 
       # Step 3: Download previously saved data as artifacts (optional)
       - name: Download Artifacts
