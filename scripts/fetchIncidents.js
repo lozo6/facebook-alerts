@@ -57,7 +57,6 @@ const saveToDatabase = async (incident) => {
     }
   };
 
-
 const fetchIncidents = async () => {
   try {
     console.log("Fetching data from Citizens API...");
