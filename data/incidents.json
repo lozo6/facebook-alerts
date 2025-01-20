@@ -18,22 +18,31 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 222 Stuyvesant Ave. Police are responding to a report of a man who robbed a person and fled eastbound on Monroe Street. Police are mobilizing additional units in response to a confirmed firearm incident, with the suspect last seen fleeing eastbound on Monroe Street. Radio clips available."
   },
   {
-    "title": "[Alert - Stolen Vehicle]",
-    "level": "medium",
-    "rank": 6,
-    "location": "Onderdonk Ave & Harman St",
-    "neighborhood": "Ridgewood, Queens",
-    "time": "Reported at 01/19/25 at 10:06 AM",
-    "updates": "A 911 caller has reported an unconfirmed incident at Onderdonk Ave & Harman St. Police have received a report of two men stealing items from another car."
+    "title": "Three Disabled MTA Buses",
+    "level": "low",
+    "rank": 7,
+    "location": "153-16 Sanford Ave",
+    "neighborhood": "Murray Hill, Queens",
+    "time": "Reported at 01/19/25 at 9:10 PM",
+    "updates": "Incident reported at 153-16 Sanford Ave. A Citizen user shows video of three disabled MTA buses stopped in the middle of a road possibly due to snowy road conditions. Use caution while driving in the area."
   },
   {
-    "title": "[Alert - Stolen Vehicle]",
-    "level": "medium",
-    "rank": 6,
-    "location": "1604 E New York Ave",
-    "neighborhood": "Brownsville, Brooklyn",
-    "time": "Reported at 01/18/25 at 11:49 PM",
-    "updates": "A 911 caller has reported an unconfirmed incident at 1604 E New York Ave. Police have received a 911 report of a car collision."
+    "title": "Report of Ten Gunshots Heard",
+    "level": "low",
+    "rank": 7,
+    "location": "71st Ave & 141st St",
+    "neighborhood": "Kew Gardens Hills, Queens",
+    "time": "Reported at 01/19/25 at 9:08 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 71st Ave & 141st St. Police have received a report of ten gunshots heard. No suspect description has been provided."
+  },
+  {
+    "title": "Smoke Condition Due to Burnt Item",
+    "level": "low",
+    "rank": 7,
+    "location": "Wilson Av Station (L)",
+    "neighborhood": "Bushwick, Brooklyn",
+    "time": "Reported at 01/19/25 at 8:43 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at Wilson Av Station (L). Firefighters are responding to a report of a smoke condition due to a burnt item. Radio clips available."
   },
   {
     "title": "Police Activity",
@@ -45,6 +54,15 @@
     "updates": "A 911 caller has reported an unconfirmed incident at Metropolitan Ave & Pleasantview St. Police are responding to a report of a person who may need assistance."
   },
   {
+    "title": "People Stuck in Disabled Elevator",
+    "level": "low",
+    "rank": 7,
+    "location": "100-26 67th Rd",
+    "neighborhood": "Forest Hills, Queens",
+    "time": "Reported at 01/19/25 at 8:42 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 100-26 67th Rd. Firefighters are responding to a 911 report of people stuck in a disabled elevator."
+  },
+  {
     "title": "Driver Trapped After Crash",
     "level": "low",
     "rank": 7,
@@ -52,6 +70,15 @@
     "neighborhood": "Middle Village, Queens",
     "time": "Reported at 01/19/25 at 8:40 PM",
     "updates": "Police have received a report of a driver trapped after a crash. A 911 caller has reported an unconfirmed incident at 6636 Woodhaven Blvd."
+  },
+  {
+    "title": "Vehicle Crash",
+    "level": "low",
+    "rank": 7,
+    "location": "66th Pl & Otto Rd",
+    "neighborhood": "Glendale, Queens",
+    "time": "Reported at 01/19/25 at 8:38 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 66th Pl & Otto Rd. Police have received a 911 report of a vehicle crash."
   },
   {
     "title": "Fire in Apartment at Ravenswood Houses",
@@ -108,15 +135,6 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 83-75 118th St. Police have received a report of a person robbed at gunpoint."
   },
   {
-    "title": "Person Breaking Into Vehicle",
-    "level": "low",
-    "rank": 7,
-    "location": "72-33 Cypress Hills St",
-    "neighborhood": "Glendale, Queens",
-    "time": "Reported at 01/19/25 at 3:45 PM",
-    "updates": "Police have received a report of a person breaking into a vehicle. A 911 caller has reported an unconfirmed incident at 72-33 Cypress Hills St."
-  },
-  {
     "title": "Report of Person Shot",
     "level": "low",
     "rank": 7,
@@ -133,15 +151,6 @@
     "neighborhood": "Astoria, Queens",
     "time": "Reported at 01/19/25 at 2:31 PM",
     "updates": "Firefighters are responding to a report of a manhole fire. A 911 caller has reported an unconfirmed incident at Steinway St & Broadway. Firefighters have determined the issue is steam from the manhole, not a fire, and have notified the utility company."
-  },
-  {
-    "title": "One Possible Gunshot Detected",
-    "level": "low",
-    "rank": 7,
-    "location": "167 Ainslie St",
-    "neighborhood": "Williamsburg, Brooklyn",
-    "time": "Reported at 01/19/25 at 11:56 AM",
-    "updates": "A 911 caller has reported an unconfirmed incident at 167 Ainslie St. ShotSpotter technology has detected one possible gunshot coming from the rooftop. ShotSpotter devices pick up gunshots or similar loud noises, such as fireworks or backfiring vehicles."
   },
   {
     "title": "Manhole Fire",
@@ -169,14 +178,5 @@
     "neighborhood": "Astoria, Queens",
     "time": "Reported at 01/18/25 at 11:14 PM",
     "updates": "A 911 caller has reported an unconfirmed incident at 30th Ave & 38th St. Police have received a report of an officer requesting backup. It is unclear what assistance is needed."
-  },
-  {
-    "title": "Vehicle Collision With Injuries",
-    "level": "low",
-    "rank": 7,
-    "location": "156-26 Northern Blvd",
-    "neighborhood": "Murray Hill, Queens",
-    "time": "Reported at 01/18/25 at 6:50 PM",
-    "updates": "Police have received a report of a vehicle collision with injuries. A 911 caller has reported an unconfirmed incident at 156-26 Northern Blvd."
   }
 ]
