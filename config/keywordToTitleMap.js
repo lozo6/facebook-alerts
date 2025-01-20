@@ -25,7 +25,7 @@ const keywordToTitleMap = {
       phrases: [
         "shot fired", "shots fired", "gunfire reported", "gunfire heard",
         "shooting in progress", "active shooter", "multiple shots",
-        "multiple gunshots", "weapon discharged"
+        "multiple gunshots", "weapon discharged", "person shot"
       ],
       words: [
         "shot", "shots", "gunfire", "gunshots", "shooting", "shooter",
@@ -94,7 +94,8 @@ const keywordToTitleMap = {
       rank: 6,
       phrases: [
         "vehicle theft", "stolen car", "carjacking in progress",
-        "license plate missing", "truck theft", "motorcycle stolen"
+        "license plate missing", "truck theft", "motorcycle stolen",
+        "break in", "breaking in"
       ],
       words: [
         "stolen", "steal", "stealing", "vehicle", "vehicles", "car", "cars",

@@ -1,5 +1,5 @@
 const keywordToTitleMap = require("../config/keywordToTitleMap");
-const formatReportedTime = require("./formatTime");
+const { formatFetchedTime } = require("./formatTime");
 
 const processIncidents = (responseData) => {
   if (!responseData?.results?.length) return [];
@@ -10,33 +10,54 @@ const processIncidents = (responseData) => {
         ? Object.values(item.updates).map((update) => update.text).join(" ")
         : "";
 
-      let matchCount = 0;
-      let alertData = { title: item.title || "", level: "low", rank: 7 };
+      let highestMatchCount = 0; // To track the highest match count
+      let bestMatchAlertData = { title: item.title || "", level: "low", rank: 7 };
 
       for (const [key, alert] of Object.entries(keywordToTitleMap)) {
-        matchCount = alert.phrases.concat(alert.words).reduce((count, term) => {
-          const regex = new RegExp(`\\b${term}\\b`, "i");
-          if (regex.test(item.title.toLowerCase()) || regex.test(details)) {
-            return count + 1;
-          }
-          return count;
-        }, 0);
+        let currentMatchCount = 0;
 
-        if (matchCount >= 2) {
-          alertData = { title: alert.title, level: alert.level, rank: alert.rank };
-          break;
+        // Count matches for phrases
+        alert.phrases.forEach((phrase) => {
+          if (
+            item.title.toLowerCase().includes(phrase) ||
+            details.toLowerCase().includes(phrase)
+          ) {
+            currentMatchCount += 2; // Give higher weight to phrases
+          }
+        });
+
+        // Count matches for words
+        alert.words.forEach((word) => {
+          const regex = new RegExp(`\\b${word}\\b`, "i");
+          if (
+            regex.test(item.title.toLowerCase()) ||
+            regex.test(details.toLowerCase())
+          ) {
+            currentMatchCount += 1; // Lower weight for individual words
+          }
+        });
+
+        // Update the best match if the current alert has a higher match count
+        if (currentMatchCount > highestMatchCount && currentMatchCount >= 2) {
+          highestMatchCount = currentMatchCount;
+          bestMatchAlertData = {
+            title: alert.title,
+            level: alert.level,
+            rank: alert.rank,
+          };
         }
       }
 
+      // Return processed data with the best match
       return {
-        ...alertData,
+        ...bestMatchAlertData,
         location: item.location,
         neighborhood: item.neighborhood || "Unknown",
-        time: formatReportedTime(item.cs),
-        updates: details,
+        time: formatFetchedTime(item.cs), // Format fetched timestamp
+        updates: details, // Combine all updates into one string
       };
     })
-    .sort((a, b) => a.rank - b.rank);
+    // .sort((a, b) => a.rank - b.rank); // Sort by rank
 };
 
 module.exports = processIncidents;

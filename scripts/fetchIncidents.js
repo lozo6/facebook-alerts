@@ -3,7 +3,6 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const processIncidents = require("../helpers/processIncidents");
-const { timeStamp } = require("console");
 
 const url = process.env.INCIDENT_URL;
 const params = {
