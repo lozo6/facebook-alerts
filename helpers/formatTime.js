@@ -20,7 +20,7 @@ const formatFetchedTime = (cs) => {
     const minutes = String(date.getMinutes()).padStart(2, "0");
     const ampm = hours >= 12 ? "PM" : "AM";
 
-    return `Reported ${mm}/${dd}/${yy} ${hours % 12 || 12}:${minutes} ${ampm}`;
+    return `Reported ${mm}/${dd}/${yy} at ${hours % 12 || 12}:${minutes} ${ampm}`;
   };
 
   module.exports = {

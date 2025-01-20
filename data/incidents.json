@@ -1,1 +1,182 @@
-[]
+[
+  {
+    "title": "Report of Man Hitting Vehicle With Hammer",
+    "level": "low",
+    "rank": 7,
+    "location": "22-25 Steinway St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-20 11:36:12",
+    "updates": "A 911 caller has reported an unconfirmed incident at 22-25 Steinway St. Police have received a report of a man hitting a vehicle with a hammer."
+  },
+  {
+    "title": "[Alert - Shots Fired]",
+    "level": "high",
+    "rank": 2,
+    "location": "65 Tompkins Ave",
+    "neighborhood": "Bedford Stuyvesant, Brooklyn",
+    "time": "2025-01-20 10:17:29",
+    "updates": "A 911 caller has reported an unconfirmed incident at 65 Tompkins Ave. Police have received a report of a person shot."
+  },
+  {
+    "title": "Report of Transformer Condition",
+    "level": "low",
+    "rank": 7,
+    "location": "Berrian Blvd & Steinway St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-20 10:00:50",
+    "updates": "Firefighters are responding to a report of a transformer condition. A 911 caller has reported an unconfirmed incident at Berrian Blvd & Steinway St. Firefighters have taped off the area due to smoke seeping from a transformer. Con Ed has been notified."
+  },
+  {
+    "title": "Eight Injured in Basement Fire",
+    "level": "low",
+    "rank": 7,
+    "location": "32-79 32nd St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-20 02:43:21",
+    "updates": "Firefighters have received a report of a fire in a first-floor apartment. A 911 caller has reported an unconfirmed incident at 32-79 32nd St. Radio clips available. A Citizen user shows video footage of first responders on the scene. Firefighters have identified the fire's location in the basement of the building and are actively addressing the situation. Firefighters have two lines in operation and are making progress in controlling the basement fire. Radio clips available. Firefighters continue operations in Queens, with three civilians being evaluated for potential injuries. Staging area has been relocated. Firefighters now report seven civilians are being assessed for minor injuries as operations continue. Resources remain on scene. Firefighters report that operations are winding down, with seven civilians being transported for minor injuries. Firefighters report an eighth civilian is being treated for minor injuries as fire operations continue. Fire operations have concluded except for a fire watch. Eight civilians were treated for minor injuries, and EMS units are now available. Radio clips available."
+  },
+  {
+    "title": "Report of Person Robbed at Gunpoint",
+    "level": "low",
+    "rank": 7,
+    "location": "388 Cleveland St",
+    "neighborhood": "East New York, Brooklyn",
+    "time": "2025-01-20 01:54:37",
+    "updates": "A 911 caller has reported an unconfirmed incident at 388 Cleveland St. Police have received a report of a person who was robbed at gunpoint."
+  },
+  {
+    "title": "[Alert - Stolen Vehicle]",
+    "level": "medium",
+    "rank": 6,
+    "location": "175th St & Jamaica Ave",
+    "neighborhood": "Jamaica, Queens",
+    "time": "2025-01-20 01:06:15",
+    "updates": "A 911 caller has reported an unconfirmed incident at 175th St & Jamaica Ave. Police have received a report of a man stealing a silver car. Radio clips available."
+  },
+  {
+    "title": "[Alert - Stolen Vehicle]",
+    "level": "medium",
+    "rank": 6,
+    "location": "20 Dane Pl",
+    "neighborhood": "Forest Hills, Queens",
+    "time": "2025-01-20 00:58:40",
+    "updates": "Incident reported at 20 Dane Pl. Approved by the Citizen community Citizen user video shows emergency vehicles on the scene of a collision involving two cars."
+  },
+  {
+    "title": "Search for Missing 16-Year-Old Named Javed",
+    "level": "low",
+    "rank": 7,
+    "location": "72nd St & Astoria Blvd",
+    "neighborhood": "Astoria Heights, Queens",
+    "time": "2025-01-19 23:24:25",
+    "updates": "Incident reported at 72nd St & Astoria Blvd. Police are searching for a missing person named Javed Lopez. The missing is a 16-year-old boy described as 6'0\", 130 lbs, last seen wearing black pants and a black sweatshirt on Friday, January 17th."
+  },
+  {
+    "title": "Smoke Condition in Apartment",
+    "level": "low",
+    "rank": 7,
+    "location": "1806 1st Ave",
+    "neighborhood": "Upper East Side, Manhattan",
+    "time": "2025-01-19 22:57:42",
+    "updates": "A 911 caller has reported an unconfirmed incident at 1806 1st Ave. Firefighters have received a report of a smoke condition in an apartment."
+  },
+  {
+    "title": "Smoke Billowing From Maintenance Hole",
+    "level": "low",
+    "rank": 7,
+    "location": "24-56 24th St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-19 21:52:44",
+    "updates": "Incident reported at 24-56 24th St. Citizen user video shows caution tape around a maintenance hole with heavy smoke pouring out. Use caution in the area. "
+  },
+  {
+    "title": "Three Disabled MTA Buses",
+    "level": "low",
+    "rank": 7,
+    "location": "153-16 Sanford Ave",
+    "neighborhood": "Murray Hill, Queens",
+    "time": "2025-01-19 21:10:52",
+    "updates": "Incident reported at 153-16 Sanford Ave. A Citizen user shows video of three disabled MTA buses stopped in the middle of a road possibly due to snowy road conditions. Use caution while driving in the area. Police are investigating a new incident involving a gray Jeep and a black Infiniti at a different location."
+  },
+  {
+    "title": "People Stuck in Disabled Elevator",
+    "level": "low",
+    "rank": 7,
+    "location": "100-26 67th Rd",
+    "neighborhood": "Forest Hills, Queens",
+    "time": "2025-01-19 20:42:50",
+    "updates": "A 911 caller has reported an unconfirmed incident at 100-26 67th Rd. Firefighters are responding to a 911 report of people stuck in a disabled elevator."
+  },
+  {
+    "title": "Driver Trapped After Crash",
+    "level": "low",
+    "rank": 7,
+    "location": "6636 Woodhaven Blvd",
+    "neighborhood": "Middle Village, Queens",
+    "time": "2025-01-19 20:40:28",
+    "updates": "Police have received a report of a driver trapped after a crash. A 911 caller has reported an unconfirmed incident at 6636 Woodhaven Blvd."
+  },
+  {
+    "title": "Fire in Apartment at Ravenswood Houses",
+    "level": "low",
+    "rank": 7,
+    "location": "35-20 24th St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-19 20:37:14",
+    "updates": "A 911 caller has reported an unconfirmed incident at 35-20 24th St. Firefighters are on the scene of a fire in an apartment at the Ravenswood Houses. Firefighters are responding to a reported fire at a bar in Queens, following an earlier apartment fire incident. Firefighters have not found any signs of fire in the reported area after a thorough search. Firefighters have confirmed a kitchen fire at the location and are currently addressing the situation. Firefighters have water on the kitchen fire and are actively working to extinguish it. Radio clips available. Firefighters report the kitchen fire is nearly extinguished, with no occupants found. Current response will be maintained."
+  },
+  {
+    "title": "Vehicle Collision",
+    "level": "low",
+    "rank": 7,
+    "location": "107-22 67th Ave",
+    "neighborhood": "Forest Hills, Queens",
+    "time": "2025-01-19 20:36:58",
+    "updates": "Incident reported at 107-22 67th Ave. Approved by the Citizen community Citizen user @WRauf shows video of a vehicle collision in the area. Please exercise caution nearby. Go LIVE or comment below to share real-time updates from the scene."
+  },
+  {
+    "title": "Smoke Condition in Apartment Building",
+    "level": "low",
+    "rank": 7,
+    "location": "106-35 159th St",
+    "neighborhood": "Jamaica, Queens",
+    "time": "2025-01-19 17:15:36",
+    "updates": "A 911 caller has reported an unconfirmed incident at 106-35 159th St. Police have received a report of smoke in an apartment building. Firefighters have also been notified."
+  },
+  {
+    "title": "Report of Maintenance Hole Fire",
+    "level": "low",
+    "rank": 7,
+    "location": "453 Empire Blvd",
+    "neighborhood": "Crown Heights, Brooklyn",
+    "time": "2025-01-19 16:58:52",
+    "updates": "Firefighters have received an unconfirmed report of a maintenance hole fire. A 911 caller has reported an unconfirmed incident at 453 Empire Blvd."
+  },
+  {
+    "title": "Report of Person Robbed at Gunpoint",
+    "level": "low",
+    "rank": 7,
+    "location": "83-75 118th St",
+    "neighborhood": "Kew Gardens, Queens",
+    "time": "2025-01-19 16:12:50",
+    "updates": "A 911 caller has reported an unconfirmed incident at 83-75 118th St. Police have received a report of a person robbed at gunpoint."
+  },
+  {
+    "title": "[Alert - Stolen Vehicle]",
+    "level": "medium",
+    "rank": 6,
+    "location": "72-33 Cypress Hills St",
+    "neighborhood": "Glendale, Queens",
+    "time": "2025-01-19 15:45:48",
+    "updates": "Police have received a report of a person breaking into a vehicle. A 911 caller has reported an unconfirmed incident at 72-33 Cypress Hills St."
+  },
+  {
+    "title": "[Alert - Armed Suspect]",
+    "level": "high",
+    "rank": 3,
+    "location": "222 Stuyvesant Ave",
+    "neighborhood": "Bedford Stuyvesant, Brooklyn",
+    "time": "2025-01-19 15:30:29",
+    "updates": "A 911 caller has reported an unconfirmed incident at 222 Stuyvesant Ave. Police are responding to a report of a man who robbed a person and fled eastbound on Monroe Street. Police are mobilizing additional units in response to a confirmed firearm incident, with the suspect last seen fleeing eastbound on Monroe Street. Radio clips available."
+  }
+]

@@ -3,7 +3,7 @@ const axios = require("axios");
 const { Client } = require("pg");
 const fs = require("fs");
 const path = require("path");
-const { formatReportedTimeForPost } = require("../helpers/formatTime"); // Import formatting function
+const { formatReportedTimeForPost } = require("../helpers/formatTime");
 
 const pageId = process.env.PAGE_ID;
 const accessToken = process.env.ACCESS_TOKEN;
@@ -16,6 +16,22 @@ const client = new Client({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 });
+
+const checkForRecentHighPriorityPosts = async () => {
+  const query = `
+    SELECT COUNT(*) FROM posted_alerts
+    WHERE level = 'high' AND posted = TRUE
+      AND posted_at >= NOW() - INTERVAL '2 hours';
+  `;
+
+  try {
+    const result = await client.query(query);
+    return parseInt(result.rows[0].count, 10) > 0; // Returns true if high-priority alerts exist
+  } catch (error) {
+    console.error("Error checking for recent high-priority posts:", error.message);
+    return false;
+  }
+};
 
 const checkIfAlertExists = async (title, time) => {
   const query = `
@@ -35,7 +51,7 @@ const checkIfAlertExists = async (title, time) => {
 
 const savePostedAlertToDB = async (alert) => {
   const query = `
-    INSERT INTO posted_alerts (title, level, rank, location, neighborhood, time, updates, posted, fetched_at)
+    INSERT INTO posted_alerts (title, level, rank, location, neighborhood, time, updates, posted, posted_at)
     VALUES ($1, $2, $3, $4, $5, $6, $7, TRUE, NOW())
     RETURNING id;
   `;
@@ -57,7 +73,7 @@ const savePostedAlertToDB = async (alert) => {
   }
 };
 
-const postToFacebook = async () => {
+const postToFacebook = async (level, rank = null) => {
   try {
     if (!fs.existsSync(citizensFilePath)) {
       console.error("No incidents data file found. Run fetchIncidents.js first.");
@@ -72,7 +88,20 @@ const postToFacebook = async () => {
 
     await client.connect();
 
+    if (level === "medium") {
+      console.log("Checking for recent high-priority posts...");
+      const recentHighPosts = await checkForRecentHighPriorityPosts();
+      if (recentHighPosts) {
+        console.log("High-priority posts detected in the last 2 hours. Skipping medium-priority posts.");
+        return;
+      }
+    }
+
     for (const post of data) {
+      if (post.level !== level || (rank && post.rank !== rank)) {
+        continue; // Skip posts that don't match the level or rank
+      }
+
       const { title, location, time, updates, neighborhood } = post;
 
       // Skip posting if the alert already exists in the database
@@ -90,7 +119,7 @@ const postToFacebook = async () => {
       const formattedTime = formatReportedTimeForPost(time);
 
       // Construct the Facebook post content
-      const formattedOutput = `${title}\n\n\n${boroughWithAddress}\n${formattedTime}\n\n\n${hashtags}`;
+      const formattedOutput = `${title}\n\n${boroughWithAddress}\n\n${formattedTime}\n\n${hashtags}`;
 
       try {
         // Post to Facebook
@@ -122,6 +151,6 @@ module.exports = postToFacebook;
 if (require.main === module) {
   (async () => {
     console.log("Starting the posting script...");
-    await postToFacebook();
+    await postToFacebook("high");
   })();
 }

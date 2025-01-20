@@ -15,14 +15,14 @@ const runWorkflow = async () => {
   if (hour >= 7 && hour < 23) {
     // Daytime Logic
     console.log("Daytime detected: Processing high-level alerts...");
-    await postToFacebook({ level: "high" });
+    await postToFacebook("high");
 
     console.log("Processing medium-level alerts...");
-    await postToFacebook({ level: "medium", delayHours: 2 });
+    await postToFacebook("medium");
   } else {
     // Nighttime Logic
     console.log("Nighttime detected: Only processing home invasion alerts...");
-    await postToFacebook({ level: "high", rank: 1 });
+    await postToFacebook("high", 1); // Rank 1 is for home invasion
   }
 };
 
