@@ -1,0 +1,182 @@
+[
+  {
+    "title": "[Alert - Shots Fired]",
+    "level": "high",
+    "rank": 2,
+    "location": "8-10 27th Ave",
+    "neighborhood": "Astoria, Queens",
+    "time": "Reported at 01/19/25 at 9:20 AM",
+    "updates": "ShotSpotter technology has detected two rounds of possible gunshots coming from the rooftop. ShotSpotter devices pick up gunshots or similar loud noises, such as fireworks or backfiring vehicles. A 911 caller has reported an unconfirmed incident at 9-02 27th Ave. The address reported for this incident has changed to 8-10 27th Ave. Police are responding to reports of a shooting where a person was shot in the leg. The suspect has fled the scene. Police are conducting a hospital canvass after finding a shell casing in the parking lot. Radio clips available."
+  },
+  {
+    "title": "[Alert - Armed Suspect]",
+    "level": "high",
+    "rank": 3,
+    "location": "222 Stuyvesant Ave",
+    "neighborhood": "Bedford Stuyvesant, Brooklyn",
+    "time": "Reported at 01/19/25 at 3:30 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 222 Stuyvesant Ave. Police are responding to a report of a man who robbed a person and fled eastbound on Monroe Street. Police are mobilizing additional units in response to a confirmed firearm incident, with the suspect last seen fleeing eastbound on Monroe Street. Radio clips available."
+  },
+  {
+    "title": "[Alert - Stolen Vehicle]",
+    "level": "medium",
+    "rank": 6,
+    "location": "Onderdonk Ave & Harman St",
+    "neighborhood": "Ridgewood, Queens",
+    "time": "Reported at 01/19/25 at 10:06 AM",
+    "updates": "A 911 caller has reported an unconfirmed incident at Onderdonk Ave & Harman St. Police have received a report of two men stealing items from another car."
+  },
+  {
+    "title": "[Alert - Stolen Vehicle]",
+    "level": "medium",
+    "rank": 6,
+    "location": "1604 E New York Ave",
+    "neighborhood": "Brownsville, Brooklyn",
+    "time": "Reported at 01/18/25 at 11:49 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 1604 E New York Ave. Police have received a 911 report of a car collision."
+  },
+  {
+    "title": "Police Activity",
+    "level": "low",
+    "rank": 7,
+    "location": "Metropolitan Ave & Pleasantview St",
+    "neighborhood": "Middle Village, Queens",
+    "time": "Reported at 01/19/25 at 8:42 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at Metropolitan Ave & Pleasantview St. Police are responding to a report of a person who may need assistance."
+  },
+  {
+    "title": "Driver Trapped After Crash",
+    "level": "low",
+    "rank": 7,
+    "location": "6636 Woodhaven Blvd",
+    "neighborhood": "Middle Village, Queens",
+    "time": "Reported at 01/19/25 at 8:40 PM",
+    "updates": "Police have received a report of a driver trapped after a crash. A 911 caller has reported an unconfirmed incident at 6636 Woodhaven Blvd."
+  },
+  {
+    "title": "Fire in Apartment at Ravenswood Houses",
+    "level": "low",
+    "rank": 7,
+    "location": "35-20 24th St",
+    "neighborhood": "Astoria, Queens",
+    "time": "Reported at 01/19/25 at 8:37 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 35-20 24th St. Firefighters are on the scene of a fire in an apartment at the Ravenswood Houses. Firefighters are responding to a reported fire at a bar in Queens, following an earlier apartment fire incident. Firefighters have not found any signs of fire in the reported area after a thorough search. Firefighters have confirmed a kitchen fire at the location and are currently addressing the situation. Firefighters have water on the kitchen fire and are actively working to extinguish it. Radio clips available. Firefighters report the kitchen fire is nearly extinguished, with no occupants found. Current response will be maintained."
+  },
+  {
+    "title": "Vehicle Collision",
+    "level": "low",
+    "rank": 7,
+    "location": "107-22 67th Ave",
+    "neighborhood": "Forest Hills, Queens",
+    "time": "Reported at 01/19/25 at 8:36 PM",
+    "updates": "Incident reported at 107-22 67th Ave. Approved by the Citizen community Citizen user @WRauf shows video of a vehicle collision in the area. Please exercise caution nearby. Go LIVE or comment below to share real-time updates from the scene."
+  },
+  {
+    "title": "Fire Department Activity",
+    "level": "low",
+    "rank": 7,
+    "location": "40-07 12th St",
+    "neighborhood": "Astoria, Queens",
+    "time": "Reported at 01/19/25 at 7:23 PM",
+    "updates": "Incident reported at 40-07 12th St. A Citizen user shows video of firefighters in the area. Do you have more information? Go LIVE or comment below to share real-time updates from the scene."
+  },
+  {
+    "title": "Odor of Gas in Lobby",
+    "level": "low",
+    "rank": 7,
+    "location": "419 E 82nd St",
+    "neighborhood": "Upper East Side, Manhattan",
+    "time": "Reported at 01/19/25 at 5:54 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 419 E 82nd St. Firefighters have received a report of an odor of gas in the lobby."
+  },
+  {
+    "title": "Smoke Condition in Apartment Building",
+    "level": "low",
+    "rank": 7,
+    "location": "106-35 159th St",
+    "neighborhood": "Jamaica, Queens",
+    "time": "Reported at 01/19/25 at 5:15 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 106-35 159th St. Police have received a report of smoke in an apartment building. Firefighters have also been notified."
+  },
+  {
+    "title": "Report of Person Robbed at Gunpoint",
+    "level": "low",
+    "rank": 7,
+    "location": "83-75 118th St",
+    "neighborhood": "Kew Gardens, Queens",
+    "time": "Reported at 01/19/25 at 4:12 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 83-75 118th St. Police have received a report of a person robbed at gunpoint."
+  },
+  {
+    "title": "Person Breaking Into Vehicle",
+    "level": "low",
+    "rank": 7,
+    "location": "72-33 Cypress Hills St",
+    "neighborhood": "Glendale, Queens",
+    "time": "Reported at 01/19/25 at 3:45 PM",
+    "updates": "Police have received a report of a person breaking into a vehicle. A 911 caller has reported an unconfirmed incident at 72-33 Cypress Hills St."
+  },
+  {
+    "title": "Report of Person Shot",
+    "level": "low",
+    "rank": 7,
+    "location": "104-56 41st Ave",
+    "neighborhood": "Corona, Queens",
+    "time": "Reported at 01/19/25 at 3:34 PM",
+    "updates": "Police have received a report of a person who was shot. A 911 caller has reported an unconfirmed incident at 104-56 41st Ave. Radio clips available."
+  },
+  {
+    "title": "Steam From Manhole",
+    "level": "low",
+    "rank": 7,
+    "location": "Steinway St & Broadway",
+    "neighborhood": "Astoria, Queens",
+    "time": "Reported at 01/19/25 at 2:31 PM",
+    "updates": "Firefighters are responding to a report of a manhole fire. A 911 caller has reported an unconfirmed incident at Steinway St & Broadway. Firefighters have determined the issue is steam from the manhole, not a fire, and have notified the utility company."
+  },
+  {
+    "title": "One Possible Gunshot Detected",
+    "level": "low",
+    "rank": 7,
+    "location": "167 Ainslie St",
+    "neighborhood": "Williamsburg, Brooklyn",
+    "time": "Reported at 01/19/25 at 11:56 AM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 167 Ainslie St. ShotSpotter technology has detected one possible gunshot coming from the rooftop. ShotSpotter devices pick up gunshots or similar loud noises, such as fireworks or backfiring vehicles."
+  },
+  {
+    "title": "Manhole Fire",
+    "level": "low",
+    "rank": 7,
+    "location": "65th St & 65th Pl",
+    "neighborhood": "Woodside, Queens",
+    "time": "Reported at 01/19/25 at 11:17 AM",
+    "updates": "Firefighters have received a report of a manhole fire. A 911 caller has reported an unconfirmed incident at 65th St & 65th Pl."
+  },
+  {
+    "title": "Smoking Transformer",
+    "level": "low",
+    "rank": 7,
+    "location": "181 E 90th St",
+    "neighborhood": "Upper East Side, Manhattan",
+    "time": "Reported at 01/19/25 at 9:35 AM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 181 E 90th St. Firefighters are responding to a 911 report of a smoking manhole. Firefighters have identified a smoking transformer and are notifying utility services for further assistance."
+  },
+  {
+    "title": "Officer Requesting Backup",
+    "level": "low",
+    "rank": 7,
+    "location": "30th Ave & 38th St",
+    "neighborhood": "Astoria, Queens",
+    "time": "Reported at 01/18/25 at 11:14 PM",
+    "updates": "A 911 caller has reported an unconfirmed incident at 30th Ave & 38th St. Police have received a report of an officer requesting backup. It is unclear what assistance is needed."
+  },
+  {
+    "title": "Vehicle Collision With Injuries",
+    "level": "low",
+    "rank": 7,
+    "location": "156-26 Northern Blvd",
+    "neighborhood": "Murray Hill, Queens",
+    "time": "Reported at 01/18/25 at 6:50 PM",
+    "updates": "Police have received a report of a vehicle collision with injuries. A 911 caller has reported an unconfirmed incident at 156-26 Northern Blvd."
+  }
+]
