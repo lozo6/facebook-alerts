@@ -1,26 +1,28 @@
 const { Client } = require("pg");
 
-const client = new Client({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+const createClient = () => {
+  return new Client({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+};
 
 const connectDB = async () => {
+  const client = createClient();
   try {
-    if (!client._connected) {
-      await client.connect();
-      console.log("Connected to the database.");
-    }
+    await client.connect();
+    console.log("Connected to the database.");
+    return client;
   } catch (error) {
     console.error("Error connecting to the database:", error.message);
     throw error;
   }
 };
 
-const disconnectDB = async () => {
+const disconnectDB = async (client) => {
   try {
     await client.end();
     console.log("Disconnected from the database.");
@@ -29,7 +31,7 @@ const disconnectDB = async () => {
   }
 };
 
-const saveIncident = async (incident, table) => {
+const saveIncident = async (client, incident, table) => {
   const query = `
     INSERT INTO ${table} (title, level, rank, location, neighborhood, time, updates, fetched_at)
     VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())
@@ -54,7 +56,7 @@ const saveIncident = async (incident, table) => {
   }
 };
 
-const clearTable = async (table) => {
+const clearTable = async (client, table) => {
   try {
     await client.query(`TRUNCATE TABLE ${table};`);
     console.log(`Cleared ${table} table.`);
@@ -63,7 +65,7 @@ const clearTable = async (table) => {
   }
 };
 
-const getIncidentToPost = async (level, rank = null) => {
+const getIncidentToPost = async (client, level, rank = null) => {
   const query = `
     SELECT * FROM current_incidents
     WHERE level = $1 ${rank ? "AND rank = $2" : ""}
@@ -81,7 +83,7 @@ const getIncidentToPost = async (level, rank = null) => {
   }
 };
 
-const savePostedAlert = async (alert) => {
+const savePostedAlert = async (client, alert) => {
   const query = `
     INSERT INTO posted_alerts (title, level, rank, location, neighborhood, time, updates, posted, posted_at)
     VALUES ($1, $2, $3, $4, $5, $6, $7, TRUE, NOW());
@@ -97,7 +99,7 @@ const savePostedAlert = async (alert) => {
   ];
 
   try {
-    const result = await client.query(query, values);
+    await client.query(query, values);
     console.log(`Posted alert saved to database: ${alert.title}`);
   } catch (error) {
     console.error("Error saving posted alert:", error.message);
