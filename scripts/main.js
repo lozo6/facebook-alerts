@@ -14,17 +14,19 @@ const runWorkflow = async () => {
 
   if (hour >= 7 && hour < 23) {
     // Daytime Logic
-    console.log("Daytime detected: Processing high-priority alerts...");
-    await postToFacebook({ priority: "high" });
+    console.log("Daytime detected: Processing high-level alerts...");
+    await postToFacebook({ level: "high" });
 
-    console.log("Processing medium-priority alerts...");
-    await postToFacebook({ priority: "medium", delayHours: 2 });
+    console.log("Processing medium-level alerts...");
+    await postToFacebook({ level: "medium", delayHours: 2 });
   } else {
     // Nighttime Logic
     console.log("Nighttime detected: Only processing home invasion alerts...");
-    await postToFacebook({ priority: "high", filter: "Home Invasion" });
+    await postToFacebook({ level: "high", rank: 1 });
   }
 };
+
+module.exports = runWorkflow;
 
 // Run the workflow only if the script is executed directly
 if (require.main === module) {
@@ -34,5 +36,3 @@ if (require.main === module) {
     console.log("Workflow completed.");
   })();
 }
-
-module.exports = runWorkflow;
