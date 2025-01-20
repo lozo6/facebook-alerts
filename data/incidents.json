@@ -1,5 +1,41 @@
 [
   {
+    "title": "Six-Vehicle Collision",
+    "level": "low",
+    "rank": 7,
+    "location": "Belt Pkwy E & Exit 17",
+    "neighborhood": "Howard Beach, Queens",
+    "time": "2025-01-20 12:32:03",
+    "updates": "A 911 caller has reported an unconfirmed incident at Belt Pkwy E & Exit 17. Police have received a report of a six-vehicle collision."
+  },
+  {
+    "title": "[Alert - Robbery]",
+    "level": "medium",
+    "rank": 4,
+    "location": "40-20 Queens Blvd",
+    "neighborhood": "Sunnyside, Queens",
+    "time": "2025-01-20 12:08:50",
+    "updates": "On January 15, at approximately 4:25 p.m., an unidentified individual robbed a Capital One bank at 40-20 Queens Boulevard, demanding cash from the teller. Incident reported at 40-20 Queens Blvd. The suspect fled the scene with $441.00. \n\nAuthorities are seeking information on the suspect, and the public is urged to call the NYPD’s Crime Stoppers Hotline at 1-800-577-TIPS."
+  },
+  {
+    "title": "Vehicle Collision",
+    "level": "low",
+    "rank": 7,
+    "location": "Cross Bay Blvd & Belt Pkwy W",
+    "neighborhood": "Howard Beach, Queens",
+    "time": "2025-01-20 12:07:10",
+    "updates": "A 911 caller has reported an unconfirmed incident at Cross Bay Blvd & Belt Pkwy W. Police have received a report of a vehicle collision."
+  },
+  {
+    "title": "Report of Transformer Explosion",
+    "level": "low",
+    "rank": 7,
+    "location": "Forest Ave & Summerfield St",
+    "neighborhood": "Ridgewood, Queens",
+    "time": "2025-01-20 11:41:59",
+    "updates": "A 911 caller has reported an unconfirmed incident at Forest Ave & Summerfield St. Police are responding to a report of a transformer explosion."
+  },
+  {
     "title": "Report of Man Hitting Vehicle With Hammer",
     "level": "low",
     "rank": 7,
@@ -9,22 +45,49 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 22-25 Steinway St. Police have received a report of a man hitting a vehicle with a hammer."
   },
   {
-    "title": "[Alert - Shots Fired]",
-    "level": "high",
-    "rank": 2,
-    "location": "65 Tompkins Ave",
-    "neighborhood": "Bedford Stuyvesant, Brooklyn",
-    "time": "2025-01-20 10:17:29",
-    "updates": "A 911 caller has reported an unconfirmed incident at 65 Tompkins Ave. Police have received a report of a person shot."
-  },
-  {
-    "title": "Report of Transformer Condition",
+    "title": "Sign Fell Onto Highway",
     "level": "low",
     "rank": 7,
-    "location": "Berrian Blvd & Steinway St",
+    "location": "Jackie Robinson Pkwy S & Cypress Hills St",
+    "neighborhood": "Glendale, Queens",
+    "time": "2025-01-20 10:39:59",
+    "updates": "Police have received a report of a sign that fell onto the highway. A 911 caller has reported an unconfirmed incident at Jackie Robinson Pkwy S & Cypress Hills St."
+  },
+  {
+    "title": "Report of Manhole Fire",
+    "level": "low",
+    "rank": 7,
+    "location": "277 Graham Ave",
+    "neighborhood": "Williamsburg, Brooklyn",
+    "time": "2025-01-20 10:16:31",
+    "updates": "A 911 caller has reported an unconfirmed incident at 277 Graham Ave. Firefighters have received a report of a manhole fire."
+  },
+  {
+    "title": "[Alert - Stolen Vehicle]",
+    "level": "medium",
+    "rank": 6,
+    "location": "Meeker Ave & Apollo St",
+    "neighborhood": "Greenpoint, Brooklyn",
+    "time": "2025-01-20 09:03:03",
+    "updates": "A 911 caller has reported an unconfirmed incident at Meeker Ave & Apollo St. Police are responding to a report of a stolen vehicle. Police have identified the stolen vehicle as a black Dodge Ram with no license plate."
+  },
+  {
+    "title": "Report of Car Fire",
+    "level": "low",
+    "rank": 7,
+    "location": "Horace Harding Expy & Peck Ave",
+    "neighborhood": "Fresh Meadows, Queens",
+    "time": "2025-01-20 06:26:05",
+    "updates": "A 911 caller has reported an unconfirmed incident at Horace Harding Expy & Peck Ave. Firefighters are responding to a report of a car fire."
+  },
+  {
+    "title": "Person Robbed",
+    "level": "low",
+    "rank": 7,
+    "location": "30th Ave & Steinway St",
     "neighborhood": "Astoria, Queens",
-    "time": "2025-01-20 10:00:50",
-    "updates": "Firefighters are responding to a report of a transformer condition. A 911 caller has reported an unconfirmed incident at Berrian Blvd & Steinway St. Firefighters have taped off the area due to smoke seeping from a transformer. Con Ed has been notified."
+    "time": "2025-01-20 05:02:09",
+    "updates": "A 911 caller has reported an unconfirmed incident at 30th Ave & Steinway St. Police have received a 911 report of a person who was robbed."
   },
   {
     "title": "Eight Injured in Basement Fire",
@@ -36,15 +99,6 @@
     "updates": "Firefighters have received a report of a fire in a first-floor apartment. A 911 caller has reported an unconfirmed incident at 32-79 32nd St. Radio clips available. A Citizen user shows video footage of first responders on the scene. Firefighters have identified the fire's location in the basement of the building and are actively addressing the situation. Firefighters have two lines in operation and are making progress in controlling the basement fire. Radio clips available. Firefighters continue operations in Queens, with three civilians being evaluated for potential injuries. Staging area has been relocated. Firefighters now report seven civilians are being assessed for minor injuries as operations continue. Resources remain on scene. Firefighters report that operations are winding down, with seven civilians being transported for minor injuries. Firefighters report an eighth civilian is being treated for minor injuries as fire operations continue. Fire operations have concluded except for a fire watch. Eight civilians were treated for minor injuries, and EMS units are now available. Radio clips available."
   },
   {
-    "title": "Report of Person Robbed at Gunpoint",
-    "level": "low",
-    "rank": 7,
-    "location": "388 Cleveland St",
-    "neighborhood": "East New York, Brooklyn",
-    "time": "2025-01-20 01:54:37",
-    "updates": "A 911 caller has reported an unconfirmed incident at 388 Cleveland St. Police have received a report of a person who was robbed at gunpoint."
-  },
-  {
     "title": "[Alert - Stolen Vehicle]",
     "level": "medium",
     "rank": 6,
@@ -54,13 +108,31 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 175th St & Jamaica Ave. Police have received a report of a man stealing a silver car. Radio clips available."
   },
   {
-    "title": "[Alert - Stolen Vehicle]",
-    "level": "medium",
-    "rank": 6,
-    "location": "20 Dane Pl",
-    "neighborhood": "Forest Hills, Queens",
-    "time": "2025-01-20 00:58:40",
-    "updates": "Incident reported at 20 Dane Pl. Approved by the Citizen community Citizen user video shows emergency vehicles on the scene of a collision involving two cars."
+    "title": "Report of Person Threatening to Stab Woman",
+    "level": "low",
+    "rank": 7,
+    "location": "19-64 81st St",
+    "neighborhood": "Astoria Heights, Queens",
+    "time": "2025-01-19 23:45:30",
+    "updates": "A 911 caller has reported an unconfirmed incident at 19-64 81st St. Police have received a report of a person threatening to stab a woman."
+  },
+  {
+    "title": "Report of Live Wire Sparking in Front of House",
+    "level": "low",
+    "rank": 7,
+    "location": "62-80 Forest Ave",
+    "neighborhood": "Ridgewood, Queens",
+    "time": "2025-01-19 23:43:33",
+    "updates": "A 911 caller has reported an unconfirmed incident at 62-80 Forest Ave. Police are responding to a report of a live wire sparking in front of a house. Firefighters are also en route."
+  },
+  {
+    "title": "Hit-and-Run Crash",
+    "level": "low",
+    "rank": 7,
+    "location": "150-37 89th St",
+    "neighborhood": "Howard Beach, Queens",
+    "time": "2025-01-19 23:36:12",
+    "updates": "A 911 caller has reported an unconfirmed incident at 150-37 89th St. Police have received a 911 report of a hit-and-run crash."
   },
   {
     "title": "Search for Missing 16-Year-Old Named Javed",
@@ -81,15 +153,6 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 1806 1st Ave. Firefighters have received a report of a smoke condition in an apartment."
   },
   {
-    "title": "Smoke Billowing From Maintenance Hole",
-    "level": "low",
-    "rank": 7,
-    "location": "24-56 24th St",
-    "neighborhood": "Astoria, Queens",
-    "time": "2025-01-19 21:52:44",
-    "updates": "Incident reported at 24-56 24th St. Citizen user video shows caution tape around a maintenance hole with heavy smoke pouring out. Use caution in the area. "
-  },
-  {
     "title": "Three Disabled MTA Buses",
     "level": "low",
     "rank": 7,
@@ -97,24 +160,6 @@
     "neighborhood": "Murray Hill, Queens",
     "time": "2025-01-19 21:10:52",
     "updates": "Incident reported at 153-16 Sanford Ave. A Citizen user shows video of three disabled MTA buses stopped in the middle of a road possibly due to snowy road conditions. Use caution while driving in the area. Police are investigating a new incident involving a gray Jeep and a black Infiniti at a different location."
-  },
-  {
-    "title": "People Stuck in Disabled Elevator",
-    "level": "low",
-    "rank": 7,
-    "location": "100-26 67th Rd",
-    "neighborhood": "Forest Hills, Queens",
-    "time": "2025-01-19 20:42:50",
-    "updates": "A 911 caller has reported an unconfirmed incident at 100-26 67th Rd. Firefighters are responding to a 911 report of people stuck in a disabled elevator."
-  },
-  {
-    "title": "Driver Trapped After Crash",
-    "level": "low",
-    "rank": 7,
-    "location": "6636 Woodhaven Blvd",
-    "neighborhood": "Middle Village, Queens",
-    "time": "2025-01-19 20:40:28",
-    "updates": "Police have received a report of a driver trapped after a crash. A 911 caller has reported an unconfirmed incident at 6636 Woodhaven Blvd."
   },
   {
     "title": "Fire in Apartment at Ravenswood Houses",
@@ -133,50 +178,5 @@
     "neighborhood": "Forest Hills, Queens",
     "time": "2025-01-19 20:36:58",
     "updates": "Incident reported at 107-22 67th Ave. Approved by the Citizen community Citizen user @WRauf shows video of a vehicle collision in the area. Please exercise caution nearby. Go LIVE or comment below to share real-time updates from the scene."
-  },
-  {
-    "title": "Smoke Condition in Apartment Building",
-    "level": "low",
-    "rank": 7,
-    "location": "106-35 159th St",
-    "neighborhood": "Jamaica, Queens",
-    "time": "2025-01-19 17:15:36",
-    "updates": "A 911 caller has reported an unconfirmed incident at 106-35 159th St. Police have received a report of smoke in an apartment building. Firefighters have also been notified."
-  },
-  {
-    "title": "Report of Maintenance Hole Fire",
-    "level": "low",
-    "rank": 7,
-    "location": "453 Empire Blvd",
-    "neighborhood": "Crown Heights, Brooklyn",
-    "time": "2025-01-19 16:58:52",
-    "updates": "Firefighters have received an unconfirmed report of a maintenance hole fire. A 911 caller has reported an unconfirmed incident at 453 Empire Blvd."
-  },
-  {
-    "title": "Report of Person Robbed at Gunpoint",
-    "level": "low",
-    "rank": 7,
-    "location": "83-75 118th St",
-    "neighborhood": "Kew Gardens, Queens",
-    "time": "2025-01-19 16:12:50",
-    "updates": "A 911 caller has reported an unconfirmed incident at 83-75 118th St. Police have received a report of a person robbed at gunpoint."
-  },
-  {
-    "title": "[Alert - Stolen Vehicle]",
-    "level": "medium",
-    "rank": 6,
-    "location": "72-33 Cypress Hills St",
-    "neighborhood": "Glendale, Queens",
-    "time": "2025-01-19 15:45:48",
-    "updates": "Police have received a report of a person breaking into a vehicle. A 911 caller has reported an unconfirmed incident at 72-33 Cypress Hills St."
-  },
-  {
-    "title": "[Alert - Armed Suspect]",
-    "level": "high",
-    "rank": 3,
-    "location": "222 Stuyvesant Ave",
-    "neighborhood": "Bedford Stuyvesant, Brooklyn",
-    "time": "2025-01-19 15:30:29",
-    "updates": "A 911 caller has reported an unconfirmed incident at 222 Stuyvesant Ave. Police are responding to a report of a man who robbed a person and fled eastbound on Monroe Street. Police are mobilizing additional units in response to a confirmed firearm incident, with the suspect last seen fleeing eastbound on Monroe Street. Radio clips available."
   }
 ]
