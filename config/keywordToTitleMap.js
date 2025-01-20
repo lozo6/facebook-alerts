@@ -94,7 +94,8 @@ const keywordToTitleMap = {
       rank: 6,
       phrases: [
         "vehicle theft", "stolen car", "carjacking in progress",
-        "license plate missing", "truck theft", "motorcycle stolen"
+        "license plate missing", "truck theft", "motorcycle stolen",
+        "break in", "breaking in"
       ],
       words: [
         "stolen", "steal", "stealing", "vehicle", "vehicles", "car", "cars",
