@@ -1,12 +1,18 @@
 require("dotenv").config();
 const axios = require("axios");
-const { connectDB, disconnectDB, getIncidentToPost, savePostedAlert } = require("../helpers/dbUtils");
+const {
+  connectDB,
+  disconnectDB,
+  getIncidentToPost,
+  savePostedAlert,
+} = require("../helpers/dbUtils");
 const { formatReportedTimeForPost } = require("../helpers/formatTime");
 
 const pageId = process.env.PAGE_ID;
 const accessToken = process.env.ACCESS_TOKEN;
 
-const checkForRecentPosts = async (level, delayHours = 2) => {
+// Define `checkForRecentPosts` directly in the script
+const checkForRecentPosts = async (client, level, delayHours = 2) => {
   const query = `
     SELECT COUNT(*) FROM posted_alerts
     WHERE level IN ('high', $1) AND posted = TRUE
@@ -15,32 +21,57 @@ const checkForRecentPosts = async (level, delayHours = 2) => {
   const values = [level];
 
   try {
-    const result = await connectDB().then(() => client.query(query, values));
-    return parseInt(result.rows[0].count, 10) > 0;
+    const result = await client.query(query, values);
+    return parseInt(result.rows[0].count, 10) > 0; // Returns true if posts exist
   } catch (error) {
     console.error(`Error checking recent ${level} posts:`, error.message);
     return false;
   }
 };
 
-const postToFacebook = async (level, rank = null, delayHours = 2) => {
+// Define `checkIfAlertExists` for duplicate checks
+const checkIfAlertExists = async (client, title, time) => {
+  const query = `
+    SELECT COUNT(*) FROM posted_alerts
+    WHERE title = $1 AND time = $2;
+  `;
+  const values = [title, time];
+
   try {
-    await connectDB();
+    const result = await client.query(query, values);
+    return parseInt(result.rows[0].count, 10) > 0; // Returns true if the alert exists
+  } catch (error) {
+    console.error("Error checking for existing alert:", error.message);
+    return false;
+  }
+};
+
+const postToFacebook = async (level, rank = null, delayHours = 2) => {
+  let client;
+  try {
+    client = await connectDB();
 
     // Skip medium-priority posts if there are recent high- or medium-priority posts
     if (level === "medium") {
       console.log("Checking for recent high or medium-priority posts...");
-      const recentPosts = await checkForRecentPosts(level, delayHours);
+      const recentPosts = await checkForRecentPosts(client, "medium", delayHours);
       if (recentPosts) {
-        console.log(`Skipping medium-priority post: Recent high or medium posts detected.`);
+        console.log("Skipping medium-priority post: Recent high or medium-priority posts detected.");
         return;
       }
     }
 
-    const post = await getIncidentToPost(level, rank);
+    const post = await getIncidentToPost(client, level, rank);
 
     if (!post) {
       console.log(`No ${level} priority incidents to post.`);
+      return;
+    }
+
+    // Check if the alert is already posted before proceeding
+    const alertExists = await checkIfAlertExists(client, post.title, post.time);
+    if (alertExists) {
+      console.log(`Skipping duplicate alert: ${post.title}`);
       return;
     }
 
@@ -55,14 +86,14 @@ const postToFacebook = async (level, rank = null, delayHours = 2) => {
       );
 
       console.log(`Posted to Facebook: ${post.title}`);
-      await savePostedAlert(post);
+      await savePostedAlert(client, post);
     } catch (error) {
       console.error("Error posting to Facebook:", error.message);
     }
   } catch (error) {
     console.error("An error occurred in the posting process:", error.message);
   } finally {
-    await disconnectDB();
+    if (client) await disconnectDB(client);
   }
 };
 
