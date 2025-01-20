@@ -1,5 +1,5 @@
 const keywordToTitleMap = require("../config/keywordToTitleMap");
-const formatReportedTime = require("./formatTime");
+const { formatFetchedTime } = require("./formatTime");
 
 const processIncidents = (responseData) => {
   if (!responseData?.results?.length) return [];
@@ -32,7 +32,7 @@ const processIncidents = (responseData) => {
         ...alertData,
         location: item.location,
         neighborhood: item.neighborhood || "Unknown",
-        time: formatReportedTime(item.cs),
+        time: formatFetchedTime(item.cs),
         updates: details,
       };
     })
