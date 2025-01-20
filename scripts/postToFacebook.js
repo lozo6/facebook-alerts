@@ -90,7 +90,7 @@ const postToFacebook = async () => {
       const formattedTime = formatReportedTimeForPost(time);
 
       // Construct the Facebook post content
-      const formattedOutput = `${title}\n\n${boroughWithAddress}\n${formattedTime}\n\n${hashtags}`;
+      const formattedOutput = `${title}\n\n\n${boroughWithAddress}\n${formattedTime}\n\n\n${hashtags}`;
 
       try {
         // Post to Facebook

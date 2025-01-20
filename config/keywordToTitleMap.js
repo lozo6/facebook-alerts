@@ -25,7 +25,7 @@ const keywordToTitleMap = {
       phrases: [
         "shot fired", "shots fired", "gunfire reported", "gunfire heard",
         "shooting in progress", "active shooter", "multiple shots",
-        "multiple gunshots", "weapon discharged"
+        "multiple gunshots", "weapon discharged", "person shot"
       ],
       words: [
         "shot", "shots", "gunfire", "gunshots", "shooting", "shooter",

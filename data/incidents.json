@@ -1,12 +1,57 @@
 [
   {
-    "title": "[Alert - Armed Suspect]",
+    "title": "Report of Man Hitting Vehicle With Hammer",
+    "level": "low",
+    "rank": 7,
+    "location": "22-25 Steinway St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-20 11:36:12",
+    "updates": "A 911 caller has reported an unconfirmed incident at 22-25 Steinway St. Police have received a report of a man hitting a vehicle with a hammer."
+  },
+  {
+    "title": "Sign Fell Onto Highway",
+    "level": "low",
+    "rank": 7,
+    "location": "Jackie Robinson Pkwy S & Cypress Hills St",
+    "neighborhood": "Glendale, Queens",
+    "time": "2025-01-20 10:39:59",
+    "updates": "Police have received a report of a sign that fell onto the highway. A 911 caller has reported an unconfirmed incident at Jackie Robinson Pkwy S & Cypress Hills St."
+  },
+  {
+    "title": "[Alert - Shots Fired]",
     "level": "high",
-    "rank": 3,
-    "location": "222 Stuyvesant Ave",
+    "rank": 2,
+    "location": "65 Tompkins Ave",
     "neighborhood": "Bedford Stuyvesant, Brooklyn",
-    "time": "2025-01-19 15:30:29",
-    "updates": "A 911 caller has reported an unconfirmed incident at 222 Stuyvesant Ave. Police are responding to a report of a man who robbed a person and fled eastbound on Monroe Street. Police are mobilizing additional units in response to a confirmed firearm incident, with the suspect last seen fleeing eastbound on Monroe Street. Radio clips available."
+    "time": "2025-01-20 10:17:29",
+    "updates": "A 911 caller has reported an unconfirmed incident at 65 Tompkins Ave. Police have received a report of a person shot."
+  },
+  {
+    "title": "Report of Transformer Condition",
+    "level": "low",
+    "rank": 7,
+    "location": "Berrian Blvd & Steinway St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-20 10:00:50",
+    "updates": "Firefighters are responding to a report of a transformer condition. A 911 caller has reported an unconfirmed incident at Berrian Blvd & Steinway St. Firefighters have taped off the area due to smoke seeping from a transformer. Con Ed has been notified."
+  },
+  {
+    "title": "Report of Man Assaulted on J Train",
+    "level": "low",
+    "rank": 7,
+    "location": "Broadway & Myrtle Ave",
+    "neighborhood": "Bedford Stuyvesant, Brooklyn",
+    "time": "2025-01-20 09:30:26",
+    "updates": "Incident reported at Broadway & Myrtle Ave. The address reported for this incident has changed to Broadway & Myrtle Ave. Police have received a report of a man being assaulted on the J train."
+  },
+  {
+    "title": "Eight Injured in Basement Fire",
+    "level": "low",
+    "rank": 7,
+    "location": "32-79 32nd St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-20 02:43:21",
+    "updates": "Firefighters have received a report of a fire in a first-floor apartment. A 911 caller has reported an unconfirmed incident at 32-79 32nd St. Radio clips available. A Citizen user shows video footage of first responders on the scene. Firefighters have identified the fire's location in the basement of the building and are actively addressing the situation. Firefighters have two lines in operation and are making progress in controlling the basement fire. Radio clips available. Firefighters continue operations in Queens, with three civilians being evaluated for potential injuries. Staging area has been relocated. Firefighters now report seven civilians are being assessed for minor injuries as operations continue. Resources remain on scene. Firefighters report that operations are winding down, with seven civilians being transported for minor injuries. Firefighters report an eighth civilian is being treated for minor injuries as fire operations continue. Fire operations have concluded except for a fire watch. Eight civilians were treated for minor injuries, and EMS units are now available. Radio clips available."
   },
   {
     "title": "[Alert - Stolen Vehicle]",
@@ -27,40 +72,31 @@
     "updates": "Incident reported at 20 Dane Pl. Approved by the Citizen community Citizen user video shows emergency vehicles on the scene of a collision involving two cars."
   },
   {
-    "title": "Basement Fire",
+    "title": "Report of Person Threatening to Stab Woman",
     "level": "low",
     "rank": 7,
-    "location": "32-79 32nd St",
-    "neighborhood": "Astoria, Queens",
-    "time": "2025-01-20 02:43:21",
-    "updates": "Firefighters have received a report of a fire in a first-floor apartment. A 911 caller has reported an unconfirmed incident at 32-79 32nd St. Radio clips available. A Citizen user shows video footage of first responders on the scene. Firefighters have identified the fire's location in the basement of the building and are actively addressing the situation. Firefighters have two lines in operation and are making progress in controlling the basement fire. Radio clips available. Firefighters continue operations in Queens, with three civilians being evaluated for potential injuries. Staging area has been relocated."
+    "location": "19-64 81st St",
+    "neighborhood": "Astoria Heights, Queens",
+    "time": "2025-01-19 23:45:30",
+    "updates": "A 911 caller has reported an unconfirmed incident at 19-64 81st St. Police have received a report of a person threatening to stab a woman."
   },
   {
-    "title": "Dryer Fire in Basement",
+    "title": "Report of Dog Bit Woman",
     "level": "low",
     "rank": 7,
-    "location": "459 Woodward Ave",
-    "neighborhood": "Ridgewood, Queens",
-    "time": "2025-01-20 01:29:12",
-    "updates": "A 911 caller has reported an unconfirmed incident at 459 Woodward Ave. Police are responding to a report of a dryer on fire in the basement. Firefighters are on scene using two engines and two trucks to address the basement dryer fire."
+    "location": "118-07 Liberty Ave",
+    "neighborhood": "South Ozone Park, Queens",
+    "time": "2025-01-19 23:39:08",
+    "updates": "A 911 caller has reported an unconfirmed incident at 118-07 Liberty Ave. Police are responding to a report of a dog that bit a woman. It is unclear if the dog has an owner."
   },
   {
-    "title": "Odor of Gas in Basement Apartment",
+    "title": "Search for Missing 16-Year-Old Named Javed",
     "level": "low",
     "rank": 7,
-    "location": "66-43 Pleasantview St",
-    "neighborhood": "Middle Village, Queens",
-    "time": "2025-01-19 23:22:11",
-    "updates": "A 911 caller has reported an unconfirmed incident at 66-43 Pleasantview St. Firefighters have received a report of an odor of gas in a basement apartment."
-  },
-  {
-    "title": "Group of People Causing Disturbance",
-    "level": "low",
-    "rank": 7,
-    "location": "31st St & 36th Ave",
-    "neighborhood": "Astoria, Queens",
-    "time": "2025-01-19 23:17:02",
-    "updates": "A 911 caller has reported an unconfirmed incident at 31st St & 36th Ave. Police have received a report of a group of people causing a disturbance."
+    "location": "72nd St & Astoria Blvd",
+    "neighborhood": "Astoria Heights, Queens",
+    "time": "2025-01-19 23:24:25",
+    "updates": "Incident reported at 72nd St & Astoria Blvd. Police are searching for a missing person named Javed Lopez. The missing is a 16-year-old boy described as 6'0\", 130 lbs, last seen wearing black pants and a black sweatshirt on Friday, January 17th."
   },
   {
     "title": "Smoke Condition in Apartment",
@@ -72,31 +108,22 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 1806 1st Ave. Firefighters have received a report of a smoke condition in an apartment."
   },
   {
-    "title": "Vehicle Collision",
+    "title": "Smoke Billowing From Maintenance Hole",
     "level": "low",
     "rank": 7,
-    "location": "188th St & 69th Ave",
-    "neighborhood": "Fresh Meadows, Queens",
-    "time": "2025-01-19 20:48:33",
-    "updates": "Police are responding to a report of a vehicle collision. A 911 caller has reported an unconfirmed incident at 188th St & 69th Ave."
+    "location": "24-56 24th St",
+    "neighborhood": "Astoria, Queens",
+    "time": "2025-01-19 21:52:44",
+    "updates": "Incident reported at 24-56 24th St. Citizen user video shows caution tape around a maintenance hole with heavy smoke pouring out. Use caution in the area. "
   },
   {
-    "title": "Police Activity",
+    "title": "Report of Ten Gunshots Heard",
     "level": "low",
     "rank": 7,
-    "location": "Metropolitan Ave & Pleasantview St",
-    "neighborhood": "Middle Village, Queens",
-    "time": "2025-01-19 20:42:59",
-    "updates": "A 911 caller has reported an unconfirmed incident at Metropolitan Ave & Pleasantview St. Police are responding to a report of a person who may need assistance."
-  },
-  {
-    "title": "People Stuck in Disabled Elevator",
-    "level": "low",
-    "rank": 7,
-    "location": "100-26 67th Rd",
-    "neighborhood": "Forest Hills, Queens",
-    "time": "2025-01-19 20:42:50",
-    "updates": "A 911 caller has reported an unconfirmed incident at 100-26 67th Rd. Firefighters are responding to a 911 report of people stuck in a disabled elevator."
+    "location": "71st Ave & 141st St",
+    "neighborhood": "Kew Gardens Hills, Queens",
+    "time": "2025-01-19 21:08:16",
+    "updates": "A 911 caller has reported an unconfirmed incident at 71st Ave & 141st St. Police have received a report of ten gunshots heard. No suspect description has been provided."
   },
   {
     "title": "Woman's Purse Snatched",
@@ -117,22 +144,13 @@
     "updates": "A 911 caller has reported an unconfirmed incident at 35-20 24th St. Firefighters are on the scene of a fire in an apartment at the Ravenswood Houses. Firefighters are responding to a reported fire at a bar in Queens, following an earlier apartment fire incident. Firefighters have not found any signs of fire in the reported area after a thorough search. Firefighters have confirmed a kitchen fire at the location and are currently addressing the situation. Firefighters have water on the kitchen fire and are actively working to extinguish it. Radio clips available. Firefighters report the kitchen fire is nearly extinguished, with no occupants found. Current response will be maintained."
   },
   {
-    "title": "Odor of Gas in Lobby",
+    "title": "Vehicle Collision",
     "level": "low",
     "rank": 7,
-    "location": "419 E 82nd St",
-    "neighborhood": "Upper East Side, Manhattan",
-    "time": "2025-01-19 17:54:33",
-    "updates": "A 911 caller has reported an unconfirmed incident at 419 E 82nd St. Firefighters have received a report of an odor of gas in the lobby."
-  },
-  {
-    "title": "People Fighting",
-    "level": "low",
-    "rank": 7,
-    "location": "38th Ave & 31st St",
-    "neighborhood": "Astoria, Queens",
-    "time": "2025-01-19 17:20:26",
-    "updates": "A 911 caller has reported an unconfirmed incident at 38th Ave & 31st St. Police have received a report of people fighting."
+    "location": "107-22 67th Ave",
+    "neighborhood": "Forest Hills, Queens",
+    "time": "2025-01-19 20:36:58",
+    "updates": "Incident reported at 107-22 67th Ave. Approved by the Citizen community Citizen user @WRauf shows video of a vehicle collision in the area. Please exercise caution nearby. Go LIVE or comment below to share real-time updates from the scene."
   },
   {
     "title": "Smoke Condition in Apartment Building",
@@ -160,23 +178,5 @@
     "neighborhood": "Kew Gardens, Queens",
     "time": "2025-01-19 16:12:50",
     "updates": "A 911 caller has reported an unconfirmed incident at 83-75 118th St. Police have received a report of a person robbed at gunpoint."
-  },
-  {
-    "title": "Steam From Manhole",
-    "level": "low",
-    "rank": 7,
-    "location": "Steinway St & Broadway",
-    "neighborhood": "Astoria, Queens",
-    "time": "2025-01-19 14:31:42",
-    "updates": "Firefighters are responding to a report of a manhole fire. A 911 caller has reported an unconfirmed incident at Steinway St & Broadway. Firefighters have determined the issue is steam from the manhole, not a fire, and have notified the utility company."
-  },
-  {
-    "title": "Report of Shoplifter Displayed Knife",
-    "level": "low",
-    "rank": 7,
-    "location": "1552 Pitkin Ave",
-    "neighborhood": "Brownsville, Brooklyn",
-    "time": "2025-01-19 14:18:34",
-    "updates": "A 911 caller has reported an unconfirmed incident at 1552 Pitkin Ave. Police have received a report of a shoplifter who displayed a knife and stole $100 worth of merchandise."
   }
 ]
