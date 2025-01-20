@@ -17,18 +17,19 @@ const client = new Client({
   database: process.env.DB_NAME,
 });
 
-const checkForRecentHighPriorityPosts = async () => {
+const checkForRecentPosts = async (level, delayHours = 2) => {
   const query = `
     SELECT COUNT(*) FROM posted_alerts
-    WHERE level = 'high' AND posted = TRUE
-      AND posted_at >= NOW() - INTERVAL '2 hours';
+    WHERE level = $1 AND posted = TRUE
+      AND posted_at >= NOW() - INTERVAL '${delayHours} hours';
   `;
+  const values = [level];
 
   try {
-    const result = await client.query(query);
-    return parseInt(result.rows[0].count, 10) > 0; // Returns true if high-priority alerts exist
+    const result = await client.query(query, values);
+    return parseInt(result.rows[0].count, 10) > 0; // Returns true if posts exist
   } catch (error) {
-    console.error("Error checking for recent high-priority posts:", error.message);
+    console.error(`Error checking for recent ${level}-priority posts:`, error.message);
     return false;
   }
 };
@@ -73,7 +74,7 @@ const savePostedAlertToDB = async (alert) => {
   }
 };
 
-const postToFacebook = async (level, rank = null) => {
+const postToFacebook = async (level, rank = null, delayHours = 2) => {
   try {
     if (!fs.existsSync(citizensFilePath)) {
       console.error("No incidents data file found. Run fetchIncidents.js first.");
@@ -89,10 +90,14 @@ const postToFacebook = async (level, rank = null) => {
     await client.connect();
 
     if (level === "medium") {
-      console.log("Checking for recent high-priority posts...");
-      const recentHighPosts = await checkForRecentHighPriorityPosts();
-      if (recentHighPosts) {
-        console.log("High-priority posts detected in the last 2 hours. Skipping medium-priority posts.");
+      console.log("Checking for recent high and medium-priority posts...");
+      const recentHighPosts = await checkForRecentPosts("high", delayHours);
+      const recentMediumPosts = await checkForRecentPosts("medium", delayHours);
+
+      if (recentHighPosts || recentMediumPosts) {
+        console.log(
+          `Skipping medium-priority posts: High-priority or medium-priority posts detected in the last ${delayHours} hours.`
+        );
         return;
       }
     }
@@ -149,8 +154,12 @@ const postToFacebook = async (level, rank = null) => {
 module.exports = postToFacebook;
 
 if (require.main === module) {
-  (async () => {
-    console.log("Starting the posting script...");
-    await postToFacebook("high");
-  })();
-}
+    const args = process.argv.slice(2); // Get command-line arguments
+    const level = args[0] || "high"; // Default to "high" if no argument provided
+    const rank = args[1] ? parseInt(args[1], 10) : null; // Optional rank argument
+
+    (async () => {
+      console.log(`Starting the posting script for ${level} priority...`);
+      await postToFacebook(level, rank);
+    })();
+  }
