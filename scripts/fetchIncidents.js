@@ -3,6 +3,7 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const processIncidents = require("../helpers/processIncidents");
+const { timeStamp } = require("console");
 
 const url = process.env.INCIDENT_URL;
 const params = {
@@ -10,8 +11,9 @@ const params = {
   lowerLongitude: parseFloat(process.env.LOWER_LONGITUDE),
   upperLatitude: parseFloat(process.env.UPPER_LATITUDE),
   upperLongitude: parseFloat(process.env.UPPER_LONGITUDE),
-  fullResponse: process.env.FULL_RESPONSE === "true",
-  limit: parseInt(process.env.LIMIT, 10),
+  fullResponse: "true",
+  sort: "timestamp",
+  limit: 20
 };
 
 const dataDir = "data";
