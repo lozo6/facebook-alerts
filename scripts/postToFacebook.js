@@ -77,8 +77,8 @@ const postToFacebook = async (level, rank = null, delayHours = 2) => {
 
     const formattedTime = formatReportedTimeForPost(post.time);
     const borough = post.neighborhood.split(",").pop().trim();
-    const message = `${post.title}\n\n${post.location}, ${borough}\n\n${formattedTime}\n\n#safety #alerts`;
-
+    const hashtags = `#safety #alerts #NYC #${borough.replace(/\s+/g, "")}NY`;
+    const message = `${post.title}\n\n${post.location}, ${borough}\n\n${formattedTime}\n\n${hashtags}`;
     try {
       const response = await axios.post(
         `https://graph.facebook.com/v21.0/${pageId}/feed`,
