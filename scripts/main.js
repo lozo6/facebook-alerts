@@ -5,34 +5,33 @@ const postToFacebook = require("./postToFacebook");
 const runWorkflow = async () => {
   const now = new Date();
   const hour = now.getHours();
+  const currentTime = now.toLocaleString();
 
-  console.log(`Current time: ${now.toLocaleString()} | Hour: ${hour}`);
+  console.log(`Workflow execution started. Current time: ${currentTime}, Hour: ${hour}`);
 
-  // Fetch incidents
-  console.log("Fetching new incidents...");
+  console.log("Step 1: Fetching new incidents...");
   await fetchIncidents();
 
   if (hour >= 7 && hour < 23) {
-    // Daytime Logic
-    console.log("Daytime detected: Processing high-level alerts...");
+    console.log("Daytime detected. Processing high-priority alerts...");
     await postToFacebook("high");
 
-    console.log("Processing medium-level alerts...");
+    console.log("Processing medium-priority alerts...");
     await postToFacebook("medium");
   } else {
-    // Nighttime Logic
-    console.log("Nighttime detected: Only processing home invasion alerts...");
-    await postToFacebook("high", 1); // Rank 1 is for home invasion
+    console.log("Nighttime detected. Processing home invasion alerts only...");
+    await postToFacebook("high", 1);
   }
+
+  console.log("Workflow execution complete.");
 };
 
 module.exports = runWorkflow;
 
-// Run the workflow only if the script is executed directly
 if (require.main === module) {
   (async () => {
     console.log("Starting the main workflow...");
     await runWorkflow();
-    console.log("Workflow completed.");
+    console.log("Main workflow completed.");
   })();
 }
