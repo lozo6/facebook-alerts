@@ -14,10 +14,10 @@ const connectDB = async () => {
   const client = createClient();
   try {
     await client.connect();
-    console.log("Connected to the database.");
+    console.info("Database connection established.");
     return client;
   } catch (error) {
-    console.error("Error connecting to the database:", error.message);
+    console.error("Database connection failed:", error.message);
     throw error;
   }
 };
@@ -25,9 +25,9 @@ const connectDB = async () => {
 const disconnectDB = async (client) => {
   try {
     await client.end();
-    console.log("Disconnected from the database.");
+    console.info("Database connection closed.");
   } catch (error) {
-    console.error("Error disconnecting from the database:", error.message);
+    console.error("Error during database disconnection:", error.message);
   }
 };
 
@@ -49,19 +49,19 @@ const saveIncident = async (client, incident, table) => {
 
   try {
     const result = await client.query(query, values);
-    const action = result.rowCount > 0 ? "Inserted" : "Skipped duplicate";
-    console.log(`${action} into ${table}: ${incident.title}`);
+    const action = result.rowCount > 0 ? "Inserted" : "Duplicate skipped";
+    console.debug(`${action} into ${table}: "${incident.title}"`);
   } catch (error) {
-    console.error(`Error saving to ${table}:`, error.message);
+    console.error(`Error saving incident to ${table}:`, error.message);
   }
 };
 
 const clearTable = async (client, table) => {
   try {
     await client.query(`TRUNCATE TABLE ${table};`);
-    console.log(`Cleared ${table} table.`);
+    console.debug(`Table "${table}" cleared.`);
   } catch (error) {
-    console.error(`Error clearing ${table}:`, error.message);
+    console.error(`Error clearing table "${table}":`, error.message);
   }
 };
 
@@ -78,7 +78,7 @@ const getIncidentToPost = async (client, level, rank = null) => {
     const result = await client.query(query, values);
     return result.rows[0];
   } catch (error) {
-    console.error(`Error retrieving incident to post:`, error.message);
+    console.error("Error retrieving incident for posting:", error.message);
     return null;
   }
 };
@@ -100,9 +100,9 @@ const savePostedAlert = async (client, alert) => {
 
   try {
     await client.query(query, values);
-    console.log(`Posted alert saved to database: ${alert.title}`);
+    console.info(`Posted alert recorded: "${alert.title}"`);
   } catch (error) {
-    console.error("Error saving posted alert:", error.message);
+    console.error("Error recording posted alert:", error.message);
   }
 };
 
