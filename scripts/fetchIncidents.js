@@ -33,8 +33,8 @@ const fetchIncidents = async () => {
     console.log("Cleared current_incidents table.");
 
     for (const incident of formattedData) {
-      await saveIncident(client, incident, "incidents"); // Save to historical incidents
-      await saveIncident(client, incident, "current_incidents"); // Save to current_incidents
+      await saveIncident(client, incident, "incidents");
+      await saveIncident(client, incident, "current_incidents");
     }
   } catch (error) {
     console.error("Error fetching data:", error.message);
