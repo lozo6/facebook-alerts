@@ -17,27 +17,27 @@ const params = {
 const fetchIncidents = async () => {
   let client;
   try {
-    console.log("Fetching data from Citizens API...");
+    console.log("Starting data fetch from Citizens API...");
     const response = await axios.get(url, { params });
     const formattedData = processIncidents(response.data);
 
     if (formattedData.length === 0) {
-      console.log("No incidents matched the criteria. No data saved.");
+      console.log("No new incidents found.");
       return;
     }
 
     client = await connectDB();
 
-    // Clear `current_incidents` before inserting new data
-    await clearTable("current_incidents");
-    console.log("Cleared current_incidents table.");
+    await clearTable(client, "current_incidents");
+    console.log("Cleared `current_incidents` table.");
 
     for (const incident of formattedData) {
       await saveIncident(client, incident, "incidents");
       await saveIncident(client, incident, "current_incidents");
     }
+    console.log("Incidents successfully processed and saved.");
   } catch (error) {
-    console.error("Error fetching data:", error.message);
+    console.error("Error fetching incidents:", error.message);
   } finally {
     if (client) await disconnectDB(client);
   }
@@ -47,7 +47,8 @@ module.exports = fetchIncidents;
 
 if (require.main === module) {
   (async () => {
-    console.log("Starting the fetch incidents script...");
+    console.log("Executing fetchIncidents script...");
     await fetchIncidents();
+    console.log("fetchIncidents script execution complete.");
   })();
 }

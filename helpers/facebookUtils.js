@@ -9,7 +9,7 @@ const getPostedContent = () => {
       const data = fs.readFileSync(postedFilePath, "utf8");
       return JSON.parse(data) || [];
     } catch (error) {
-      console.error("Error reading posted.json:", error.message);
+      console.error("Error reading posted content file:", error.message);
     }
   }
   return [];
@@ -20,7 +20,7 @@ const savePostedData = (postContent, postId) => {
   const existingPosts = getPostedContent();
   existingPosts.push({ postContent, postId, dateTimePosted });
   fs.writeFileSync(postedFilePath, JSON.stringify(existingPosts, null, 2));
-  console.log("Post content appended to posted.json.");
+  console.info("Posted content updated.");
 };
 
 module.exports = { getPostedContent, savePostedData };
