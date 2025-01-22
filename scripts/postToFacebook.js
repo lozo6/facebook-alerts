@@ -67,7 +67,7 @@ const postToFacebook = async (level, rank = null, delayHours = 2) => {
 
     const alertExists = await checkIfAlertExists(client, post.title, post.time);
     if (alertExists) {
-      console.log(`Skipping duplicate alert: ${post.title}`);
+      console.log(`Skipping duplicate alert: ${post.title}, time: ${post.time}`);
       return;
     }
 

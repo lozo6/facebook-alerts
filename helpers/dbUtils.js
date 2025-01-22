@@ -68,9 +68,7 @@ const clearTable = async (client, table) => {
 const getIncidentToPost = async (client, level, rank = null) => {
   const query = `
     SELECT * FROM current_incidents
-    WHERE level = $1 ${rank ? "AND rank = $2" : ""}
-    ORDER BY rank ASC, fetched_at DESC
-    LIMIT 1;
+    WHERE level = $1 ${rank ? "AND rank = $2" : ""};
   `;
   const values = rank ? [level, rank] : [level];
 
