@@ -21,13 +21,7 @@ const getDaytimePostCount = async (client) => {
   }
 };
 
-const runWorkflow = async () => {
-  const now = new Date();
-  const hour = now.getHours();
-  const currentTime = now.toLocaleString();
-
-  console.log(`Workflow execution started. Current time: ${currentTime}, Hour: ${hour}`);
-
+const runHighPriorityWorkflow = async () => {
   console.log("Step 1: Fetching new incidents...");
   await fetchIncidents();
 
@@ -35,41 +29,81 @@ const runWorkflow = async () => {
   try {
     client = await connectDB();
 
-    // Daytime logic: Check and enforce post limit
-    if (hour >= 7 && hour < 23) {
-      const daytimePostCount = await getDaytimePostCount(client);
+    const daytimePostCount = await getDaytimePostCount(client);
 
-      console.log(`Daytime post count: ${daytimePostCount}/${DAILY_POST_LIMIT}`);
-      if (daytimePostCount >= DAILY_POST_LIMIT) {
-        console.log("Daytime post limit reached. Skipping further posts.");
-        return;
-      }
-
-      console.log("Daytime detected. Processing high-priority alerts...");
-      await postToFacebook("high");
-
-      console.log("Processing medium-priority alerts...");
-      await postToFacebook("medium");
-    } else {
-      // Nighttime logic: No limit
-      console.log("Nighttime detected. Processing home invasion alerts only...");
-      await postToFacebook("high", 1);
+    console.log(`Daytime post count: ${daytimePostCount}/${DAILY_POST_LIMIT}`);
+    if (daytimePostCount >= DAILY_POST_LIMIT) {
+      console.log("Daytime post limit reached. Skipping further posts.");
+      return;
     }
+
+    console.log("Processing high-priority alerts during daytime...");
+    await postToFacebook("high");
   } catch (error) {
-    console.error("An error occurred in the workflow:", error.message);
+    console.error("An error occurred in the high-priority workflow:", error.message);
   } finally {
     if (client) await disconnectDB(client);
   }
 
-  console.log("Workflow execution complete.");
+  console.log("High-priority workflow complete.");
 };
 
-module.exports = runWorkflow;
+const runMediumPriorityWorkflow = async () => {
+  console.log("Step 1: Fetching new incidents...");
+  await fetchIncidents();
+
+  let client;
+  try {
+    client = await connectDB();
+
+    const daytimePostCount = await getDaytimePostCount(client);
+
+    console.log(`Daytime post count: ${daytimePostCount}/${DAILY_POST_LIMIT}`);
+    if (daytimePostCount >= DAILY_POST_LIMIT) {
+      console.log("Daytime post limit reached. Skipping further posts.");
+      return;
+    }
+
+    console.log("Processing medium-priority alerts during daytime...");
+    await postToFacebook("medium");
+  } catch (error) {
+    console.error("An error occurred in the medium-priority workflow:", error.message);
+  } finally {
+    if (client) await disconnectDB(client);
+  }
+
+  console.log("Medium-priority workflow complete.");
+};
+
+const runNightHighPriorityWorkflow = async () => {
+  console.log("Step 1: Fetching new incidents...");
+  await fetchIncidents();
+
+  console.log("Processing high-priority alerts during nighttime...");
+  await postToFacebook("high", 1);
+
+  console.log("Nighttime high-priority workflow complete.");
+};
+
+module.exports = { runHighPriorityWorkflow, runMediumPriorityWorkflow, runNightHighPriorityWorkflow };
 
 if (require.main === module) {
   (async () => {
-    console.log("Starting the main workflow...");
-    await runWorkflow();
-    console.log("Main workflow completed.");
+    const mode = process.argv[2];
+    if (mode === "high") {
+      console.log("Starting the high-priority daytime workflow...");
+      await runHighPriorityWorkflow();
+      console.log("High-priority daytime workflow completed.");
+    } else if (mode === "medium") {
+      console.log("Starting the medium-priority workflow...");
+      await runMediumPriorityWorkflow();
+      console.log("Medium-priority workflow completed.");
+    } else if (mode === "night") {
+      console.log("Starting the high-priority nighttime workflow...");
+      await runNightHighPriorityWorkflow();
+      console.log("High-priority nighttime workflow completed.");
+    } else {
+      console.error("Invalid mode specified. Use 'high', 'medium', or 'night'.");
+    }
   })();
 }
