@@ -38,7 +38,7 @@ const runHighPriorityWorkflow = async () => {
     }
 
     console.log("Processing high-priority alerts during daytime...");
-    await postToFacebook("high");
+    await postToFacebook("high", 2);
   } catch (error) {
     console.error("An error occurred in the high-priority workflow:", error.message);
   } finally {
